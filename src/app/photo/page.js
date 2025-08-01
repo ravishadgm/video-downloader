@@ -5,8 +5,8 @@ function page() {
   return (
     <>
       <Downloader
-        title="Instagram Video Downloader"
-        subtitle="Download Videos from Instagram"
+        title="Instagram Photo Downloader"
+        subtitle="Download Photos from Instagram"
       />
     </>
   );

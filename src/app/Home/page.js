@@ -1,9 +1,11 @@
-import React from 'react'
-
+import React from "react";
+import Downloader from "@/components/downloader/Downloader";
 function page() {
   return (
-    <div>HOME</div>
-  )
+    <>
+      <Downloader />
+    </>
+  );
 }
 
-export default page
+export default page;
