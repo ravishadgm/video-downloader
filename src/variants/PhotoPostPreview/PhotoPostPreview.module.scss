@@ -1,0 +1,48 @@
+.container {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  text-align: center;
+
+  img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+  }
+
+  .info {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #333;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+
+    a,
+    button {
+      background: #3897f0;
+      color: #fff;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+
+      &:hover {
+        background: #2f80ed;
+      }
+    }
+
+    button {
+      background: #45aaf2;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 12px;
+  padding: 10px;
+}
+
+.carouselItem {
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 300px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.carouselItem img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}

@@ -1,0 +1,154 @@
+.reelContainer {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: 700px;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: #000;
+  margin: 0 auto;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+
+  /* ✅ Show thumbnail when video is not playing */
+  &:not([data-playing="true"]) {
+    background-image: var(--poster-url);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  /* ✅ Hide background when playing */
+  &[data-playing="true"] {
+    background-image: none;
+  }
+
+  /* ✅ Ensure smooth transition */
+  transition: background-image 0.3s ease;
+}
+
+/* ✅ This overlay allows video interaction while keeping UI elements clickable */
+.overlayContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  pointer-events: none; // Allow video to be interactive
+  z-index: 1;
+}
+
+.leftContent {
+  color: white;
+  align-self: flex-end;
+  z-index: 2;
+  max-width: 75%;
+  pointer-events: none;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+
+  .username {
+    font-weight: bold;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: black;
+  }
+
+  .caption {
+    font-size: 14px;
+    margin-bottom: 8px;
+    word-wrap: break-word;
+    line-height: 1.4;
+    color: #ffffff;
+  }
+
+  .music {
+    font-size: 12px;
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #ffffff;
+  }
+}
+
+.rightActions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  align-self: center;
+  pointer-events: auto;
+
+  .icon {
+    color: #fff;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 0;
+    font-size: 25px;
+    display: flex;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    span {
+      font-size: 12px;
+      font-weight: 500;
+      margin-top: 2px;
+    }
+  }
+}
+
+/* ✅ Responsive adjustments */
+@media (max-width: 480px) {
+  .reelContainer {
+    max-width: 100%;
+    height: 600px;
+  }
+
+  .overlayContent {
+    padding: 15px;
+  }
+
+  .leftContent {
+    max-width: 70%;
+
+    .username {
+      font-size: 13px;
+    }
+
+    .caption {
+      font-size: 13px;
+    }
+
+    .music {
+      font-size: 11px;
+    }
+  }
+
+  .rightActions {
+    gap: 15px;
+
+    .icon {
+      font-size: 16px;
+      min-width: 35px;
+      min-height: 35px;
+
+      span {
+        font-size: 11px;
+      }
+    }
+  }
+}
