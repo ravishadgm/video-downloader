@@ -10,7 +10,7 @@ export default function MediaPreview({ mediaData, onShare }) {
   if (!mediaData) return null;
 
   const type = mediaData?.type?.toLowerCase();
-
+console.log(mediaData,"mediaDatamediaData")
   const renderPreview = () => {
     switch (type) {
       case "reel":

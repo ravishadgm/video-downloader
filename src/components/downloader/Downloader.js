@@ -18,7 +18,7 @@ export default function Downloader({
   title = "Instagram Downloader",
   subtitle = "Download Instagram Videos, Photos, Reels, IGTV & carousel",
 }) {
-  const [url, setUrl] = useState("");
+  const [url, setUrl] = useState("https://www.instagram.com/stories/realhinakhan/3691112957097546657/");
   const [mediaData, setMediaData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");

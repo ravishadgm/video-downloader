@@ -1,48 +1,195 @@
-.container {
+.post {
+  border: 1px solid #ddd;
+  border-radius: 8px;
   background: #fff;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  padding: 1rem;
+  max-width: 550px;
+  margin: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  font-family: sans-serif;
+}
 
-  img {
-    width: 100%;
-    max-width: 400px;
-    border-radius: 10px;
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+
+  .avatar {
+    border-radius: 50%;
   }
 
-  .info {
-    margin-top: 12px;
-    font-size: 14px;
+  .username {
+    font-weight: bold;
     color: #333;
+  }
+}
+
+.swiperContainer {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.imageWrapper {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f5f5f5;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
   }
 
   .actions {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
     display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 15px;
+    gap: 8px;
 
-    a,
     button {
-      background: #3897f0;
-      color: #fff;
-      padding: 10px 16px;
+      background: rgba(255, 255, 255, 0.9);
       border: none;
-      border-radius: 6px;
-      font-size: 14px;
+      padding: 6px;
+      border-radius: 4px;
       cursor: pointer;
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      gap: 6px;
+      transition: background 0.2s ease;
 
       &:hover {
-        background: #2f80ed;
+        background: rgba(230, 230, 230, 0.95);
+      }
+
+      svg {
+        font-size: 16px;
+        color: #333;
       }
     }
+  }
+}
 
-    button {
-      background: #45aaf2;
+.prevButton,
+.nextButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  font-size: 24px;
+  color: #333;
+
+  &:hover {
+    background: rgba(230, 230, 230, 0.95);
+  }
+}
+
+.prevButton {
+  left: 8px;
+}
+
+.nextButton {
+  right: 8px;
+}
+
+.details {
+  font-size: 14px;
+  color: #444;
+
+  .stats {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+
+    svg {
+      margin-right: 4px;
+      vertical-align: middle;
+    }
+  }
+
+  .caption {
+    margin-bottom: 0.5rem;
+  }
+
+  .date {
+    font-size: 12px;
+    color: #999;
+  }
+}
+@media (max-width: 600px) {
+  .post {
+       padding: 0.75rem;
+    margin: 1rem; 
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05)
+  }
+
+  .header {
+    gap: 0.5rem;
+
+    .avatar {
+      width: 32px !important;
+      height: 32px !important;
+    }
+
+    .username {
+      font-size: 14px;
+    }
+  }
+
+  .swiperContainer {
+    margin-bottom: 0.75rem;
+  }
+
+  .imageWrapper {
+    height: 300px;
+
+
+    .actions {
+      bottom: 8px;
+      right: 8px;
+
+      button {
+        padding: 4px;
+
+        svg {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .prevButton,
+  .nextButton {
+    padding: 6px;
+    font-size: 18px;
+  }
+
+  .details {
+    font-size: 13px;
+
+    .stats {
+      gap: 0.75rem;
+    }
+
+    .caption p {
+      font-size: 13px;
+    }
+
+    .date {
+      font-size: 11px;
     }
   }
 }
