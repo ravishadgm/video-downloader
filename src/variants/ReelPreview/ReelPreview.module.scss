@@ -15,24 +15,19 @@
   object-fit: cover;
   display: block;
 
-  /* ✅ Show thumbnail when video is not playing */
   &:not([data-playing="true"]) {
-    background-image: var(--poster-url);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
   }
 
-  /* ✅ Hide background when playing */
   &[data-playing="true"] {
     background-image: none;
   }
 
-  /* ✅ Ensure smooth transition */
   transition: background-image 0.3s ease;
 }
 
-/* ✅ This overlay allows video interaction while keeping UI elements clickable */
 .overlayContent {
   position: absolute;
   top: 0;
@@ -43,7 +38,7 @@
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
-  pointer-events: none; // Allow video to be interactive
+  pointer-events: none;
   z-index: 1;
 }
 
@@ -59,7 +54,7 @@
     font-weight: bold;
     margin-bottom: 6px;
     font-size: 14px;
-    color: black;
+    color: #ffffff;
   }
 
   .caption {
@@ -84,34 +79,41 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 18px;
+  gap: 14px;
   align-self: center;
   pointer-events: auto;
+  z-index: 3;
 
   .icon {
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
+    padding: 6px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     color: #fff;
-    cursor: pointer;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 4px;
-    padding: 8px 0;
-    font-size: 25px;
-    display: flex;
+    transition: transform 0.2s;
+    cursor: pointer;
 
     &:hover {
-      transform: scale(1.1);
+      transform: scale(1.08);
     }
 
     span {
-      font-size: 12px;
+      font-size: 10px;
       font-weight: 500;
       margin-top: 2px;
+      line-height: 1;
     }
   }
 }
 
-/* ✅ Responsive adjustments */
 @media (max-width: 480px) {
   .reelContainer {
     max-width: 100%;
@@ -139,15 +141,16 @@
   }
 
   .rightActions {
-    gap: 15px;
+    gap: 12px;
 
     .icon {
+      width: 40px;
+      height: 40px;
       font-size: 16px;
-      min-width: 35px;
-      min-height: 35px;
+      padding: 5px;
 
       span {
-        font-size: 11px;
+        font-size: 9px;
       }
     }
   }

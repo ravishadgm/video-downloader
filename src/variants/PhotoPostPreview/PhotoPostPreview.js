@@ -7,12 +7,12 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+
 import styles from "./PhotoPostPreview.module.scss";
 import {
   FaDownload,
   FaShareAlt,
   FaHeart,
-  FaComment,
   FaChevronLeft,
   FaChevronRight,
 } from "react-icons/fa";
@@ -31,14 +31,32 @@ export default function PhotoPostPreview({ data, onShare }) {
     }
   }, [swiperInstance]);
 
+  const isVideo = (url) => /\.(mp4|webm|ogg)(\?.*)?$/.test(url);
+
   const handleDownload = (url, index) => {
-    const proxyUrl = `/api/proxy?url=${encodeURIComponent(url)}`;
+    const proxyUrl = `/api/proxy?url=${encodeURIComponent(url)}&t=${Date.now()}`;
     const link = document.createElement("a");
     link.href = proxyUrl;
-    link.download = `image-${index + 1}.jpg`;
+    link.download = `media-${index + 1}`;
     document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    setTimeout(() => {
+      link.click();
+      document.body.removeChild(link);
+    }, 100);
+  };
+
+  const handleShare = (url) => {
+    if (navigator.share) {
+      navigator
+        .share({
+          title: "Instagram Post",
+          url,
+        })
+        .catch(console.error);
+    } else {
+      alert("Sharing not supported in this browser.");
+      onShare?.(url);
+    }
   };
 
   const formatDate = (ts) =>
@@ -48,19 +66,18 @@ export default function PhotoPostPreview({ data, onShare }) {
       day: "numeric",
     });
 
- 
   return (
     <div className={styles.post}>
       <div className={styles.header}>
-        {data.avatar ? (
+        {data.avatar && (
           <Image
             src={data.avatar}
-            alt={`${data.username}`}
+            alt={data.username}
             width={40}
             height={40}
             className={styles.avatar}
           />
-        ) : null}
+        )}
         <span className={styles.username}>@{data.username}</span>
       </div>
 
@@ -75,7 +92,18 @@ export default function PhotoPostPreview({ data, onShare }) {
           {data.mediaUrls?.filter(Boolean).map((url, idx) => (
             <SwiperSlide key={idx}>
               <div className={styles.imageWrapper}>
-                {url && (
+                {isVideo(url) ? (
+                  <video
+                    className={styles.image}
+                    controls
+                    playsInline
+                    muted
+                    preload="metadata"
+                  >
+                    <source src={url} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                ) : (
                   <Image
                     src={url}
                     alt={`Slide ${idx + 1}`}
@@ -84,15 +112,25 @@ export default function PhotoPostPreview({ data, onShare }) {
                     className={styles.image}
                   />
                 )}
+
                 <div className={styles.actions}>
                   <button
+                    className={styles.actionButton}
                     onClick={() => handleDownload(url, idx)}
                     title="Download"
                   >
                     <FaDownload />
+                   
                   </button>
-                  <button onClick={() => onShare(url)} title="Share">
-                    <FaShareAlt />
+
+                  <button
+                    className={styles.actionButton}
+                    onClick={() => handleShare(url)}
+                    title="Share"
+                  >
+                     <FaShareAlt style={{ pointerEvents: "none" }} />
+
+               
                   </button>
                 </div>
               </div>
@@ -111,18 +149,17 @@ export default function PhotoPostPreview({ data, onShare }) {
       <div className={styles.details}>
         <div className={styles.stats}>
           <span>
-            <FaHeart /> {data.likes}
+            <FaHeart /> {data.likes?.toLocaleString() ?? 0}
           </span>
         </div>
-      {data.caption && (
-  <div className={styles.caption}>
-    {data.caption.split("\n").map((line, index) => (
-      <p key={index}>
-        {index === 0 ? <b>{line}</b> : line}
-      </p>
-    ))}
-  </div>
-)}
+
+        {data.caption && (
+          <div className={styles.caption}>
+            {data.caption.split("\n").map((line, i) => (
+              <p key={i}>{i === 0 ? <b>{line}</b> : line}</p>
+            ))}
+          </div>
+        )}
 
         {data.timestamp && (
           <p className={styles.date}>{formatDate(data.timestamp)}</p>

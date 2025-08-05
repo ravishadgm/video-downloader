@@ -36,16 +36,16 @@ export default function ReelPreview({ data, onShare }) {
         </div>
 
         <div className={styles.rightActions}>
-          <div className={styles.icon} style={{ cursor: "none" }}>
+          <div className={styles.icon}>
             <FaHeart />
             <span>{data.likes?.toLocaleString() ?? "0"}</span>
           </div>
-          <div className={styles.icon} style={{ cursor: "none" }}>
+          <div className={styles.icon}>
             <FaEye />
             <span>{data.views?.toLocaleString() ?? "0"}</span>
           </div>
-          <div className={styles.icon}>
-            <FaPaperPlane onClick={onShare} />
+          <div className={styles.icon} onClick={onShare}>
+            <FaPaperPlane />
             <span>Share</span>
           </div>
         </div>

@@ -10,6 +10,7 @@ import {
   FaImage,
   FaRegCalendarAlt,
   FaRegEye,
+  FaTimes,
 } from "react-icons/fa";
 import { MdOutlineSlideshow, MdOutlineViewCarousel } from "react-icons/md";
 import MediaPreview from "../mediaPreview/MediaPreview";
@@ -18,7 +19,7 @@ export default function Downloader({
   title = "Instagram Downloader",
   subtitle = "Download Instagram Videos, Photos, Reels, IGTV & carousel",
 }) {
-  const [url, setUrl] = useState("https://www.instagram.com/stories/realhinakhan/3691112957097546657/");
+  const [url, setUrl] = useState("");
   const [mediaData, setMediaData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -59,6 +60,25 @@ export default function Downloader({
       });
     } else {
       alert("Sharing is not supported in your browser.");
+    }
+  };
+  const handlePaste = async () => {
+    try {
+      if (!navigator.clipboard) {
+        alert("Clipboard not supported. Please paste manually (Ctrl+V).");
+        return;
+      }
+
+      const text = await navigator.clipboard.readText();
+      setUrl(text.trim());
+    } catch (err) {
+      if (err.name === "NotAllowedError") {
+        alert(
+          "Clipboard blocked. Click the clipboard icon in address bar to allow, or paste manually (Ctrl+V)."
+        );
+      } else {
+        alert("Paste manually using Ctrl+V (or ⌘+V on Mac).");
+      }
     }
   };
 
@@ -104,18 +124,29 @@ export default function Downloader({
                 required
               />
             </label>
+
             <div className={styles.search_form__clipboard}>
-              <button
-                type="button"
-                disabled={loading}
-                className={styles.search_form__clipboard_paste}
-                onClick={() =>
-                  navigator.clipboard.readText().then((text) => setUrl(text))
-                }
-              >
-                <FaPaste />
-                Paste
-              </button>
+              {url.trim() === "" ? (
+                <button
+                  type="button"
+                  disabled={loading}
+                  className={styles.search_form__clipboard_paste}
+                  onClick={handlePaste}
+                >
+                  <FaPaste />
+                  Paste
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  disabled={loading}
+                  className={styles.search_form__clipboard_clear}
+                  onClick={() => setUrl("")}
+                >
+                  <FaTimes />
+                  Clear
+                </button>
+              )}
             </div>
           </div>
 

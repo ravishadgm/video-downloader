@@ -48,20 +48,24 @@
   }
 
   .actions {
+    z-index: 5;
+    display: inline-grid;
     position: absolute;
-    bottom: 12px;
+    bottom: 73px;
     right: 12px;
-    display: flex;
     gap: 8px;
 
-    button {
-      background: rgba(255, 255, 255, 0.9);
-      border: none;
-      padding: 6px;
-      border-radius: 4px;
+    .actionButton {
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 10px;
       cursor: pointer;
       display: flex;
       align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
       transition: background 0.2s ease;
 
       &:hover {
@@ -69,8 +73,9 @@
       }
 
       svg {
-        font-size: 16px;
+        font-size: 18px;
         color: #333;
+        pointer-events: none; // <- ensures click passes through icon
       }
     }
   }
@@ -104,7 +109,7 @@
 }
 
 .details {
-  font-size: 14px;
+  font-size: 16px;
   color: #444;
 
   .stats {
@@ -129,11 +134,11 @@
 }
 @media (max-width: 600px) {
   .post {
-       padding: 0.75rem;
-    margin: 1rem; 
+    padding: 0.75rem;
+    margin: 1rem;
     max-width: 100%;
     border-radius: 8px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05)
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
   }
 
   .header {
@@ -155,7 +160,6 @@
 
   .imageWrapper {
     height: 300px;
-
 
     .actions {
       bottom: 8px;
