@@ -1,5 +1,6 @@
 import Downloader from "@/components/downloader/Downloader";
 import React from "react";
+import ViewersDetails from "../../components/ViewersDetails/ViewersDetails";
 
 function page() {
   return (
@@ -8,6 +9,7 @@ function page() {
         title="Instagram Stories Viewer"
         subtitle="Anonymously Instagram Story Viewer"
       />
+      <ViewersDetails />
     </>
   );
 }

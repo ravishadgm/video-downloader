@@ -1,0 +1,23 @@
+"use client";
+
+import React from 'react';
+import styles from "./styles.module.scss";
+
+export default function Page() {
+    const headingId = React.useId();
+
+    return (
+        <main className={styles.ContactWrapper}>
+            <div className={styles.container}>
+                <h1 id={headingId} className={styles.heading}>Contact Us</h1>
+                <div className={styles.content} aria-labelledby={headingId}>
+                    <p>Do you want to know more about how we could help you? Don’t hesitate to get in touch with us.</p>
+                    <p>Contact us by email:{' '}<a href="mailto:support@instadl.app" className={styles.link} aria-label="Send email to support at instadl.app">
+                        support@instadl.app
+                    </a>
+                    </p>
+                </div>
+            </div>
+        </main>
+    );
+}

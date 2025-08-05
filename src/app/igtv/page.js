@@ -1,5 +1,6 @@
 import Downloader from "@/components/downloader/Downloader";
 import React from "react";
+import IgTvDetails from "../../components/IgTvDetails/IgTvDetails";
 
 function page() {
   return (
@@ -8,6 +9,7 @@ function page() {
         title="IGTV Downloader"
         subtitle="Instagram IGTV Video Download"
       />
+      <IgTvDetails />
     </>
   );
 }

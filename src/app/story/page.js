@@ -1,5 +1,6 @@
 import Downloader from "@/components/downloader/Downloader";
 import React from "react";
+import StoryDetails from "@/components/StoryDetails/StoryDetails"
 
 function page() {
   return (
@@ -8,6 +9,7 @@ function page() {
         title="Story Saver"
         subtitle="Download your Instagram story and highlights easily!"
       />
+      <StoryDetails />
     </>
   );
 }

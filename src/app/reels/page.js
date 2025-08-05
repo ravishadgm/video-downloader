@@ -1,5 +1,6 @@
 import Downloader from "@/components/downloader/Downloader";
 import React from "react";
+import ReelsDetails from "@/components/ReelsDetails/ReelsDetails";
 
 function page() {
   return (
@@ -8,6 +9,7 @@ function page() {
         title="Instagram Reels Downloader"
         subtitle="Download Reels from Instagram"
       />
+      <ReelsDetails />
     </>
   );
 }
