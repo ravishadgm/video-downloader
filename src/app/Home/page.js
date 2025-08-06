@@ -2,7 +2,7 @@ import React from "react";
 import Downloader from "@/components/downloader/Downloader";
 import AboutHome from "@/components/AboutHome/AboutHome";
 
-function page() {
+function Page() {
   return (
     <>
       <Downloader />
@@ -11,4 +11,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

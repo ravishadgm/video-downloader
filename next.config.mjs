@@ -19,6 +19,7 @@ const nextConfig = {
   },
   experimental: {
     turbo: false,
+    appDir: true, 
   },
 };
 

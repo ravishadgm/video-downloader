@@ -1,7 +1,10 @@
 import Downloader from "@/components/downloader/Downloader";
 import React from "react";
 import VideoDetails from "../../components/VideoDetails/VideoDetails";
-
+export const metadata = {
+  title: "Instagram Video Downloader",
+  description: "Download Instagram videos in high quality for free.",
+};
 function page() {
   return (
     <>

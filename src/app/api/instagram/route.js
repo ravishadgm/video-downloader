@@ -1,72 +1,33 @@
 import { NextResponse } from "next/server";
 import { createRequire } from "module";
-import fetch from "node-fetch";
-
 const require = createRequire(import.meta.url);
+
 const { getInstagramMedia } = require("../../../lib/instagram-helper");
+import { fetchStoryFromRapidAPI } from "../../../lib/instagram-story-helper";
 
-// === IGDownloader API ===
-const fetchStoryFromIGDownloader = async (url) => {
+export async function POST(req) {
   try {
-    const res = await fetch("https://igdownloader.com/api/story", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "User-Agent": "Mozilla/5.0", // avoid being blocked
-      },
-      body: JSON.stringify({ link: url }),
-    });
-
-    if (!res.ok) {
-      throw new Error(`IGDownloader API error: ${res.status}`);
-    }
-
-    const json = await res.json();
-
-    const media = json?.data || [];
-
-    const mediaUrls = media.map((item) => item.url).filter(Boolean);
-    if (mediaUrls.length === 0) throw new Error("No story media found");
-
-    return {
-      type: "story",
-      mediaUrl: mediaUrls[0],
-      mediaUrls,
-      thumbnail: mediaUrls[0],
-      username: json.user?.username || null,
-      fullName: json.user?.full_name || null,
-      isVerified: json.user?.is_verified || false,
-      postedAt: null,
-    };
-  } catch (err) {
-    console.error("IGDownloader failed:", err.message);
-    throw new Error("Story download failed: " + err.message);
-  }
-};
-
-export async function POST(request) {
-  try {
-    const { url } = await request.json();
+    const { url } = await req.json();
 
     if (!url || !/^https?:\/\/(www\.)?instagram\.com\//.test(url)) {
       return NextResponse.json({ error: "Invalid Instagram URL" }, { status: 400 });
     }
 
-    // === STORY SUPPORT ===
+    // === STORY DETECTION ===
     if (url.includes("/stories/")) {
       try {
-        const storyData = await fetchStoryFromIGDownloader(url);
+        const username = extractUsernameFromUrl(url);
+        const storyData = await fetchStoryFromRapidAPI(username);
         return NextResponse.json(storyData);
       } catch (err) {
-        console.error("Story API failed:", err.message);
         return NextResponse.json(
-          { error: "Instagram story could not be fetched. Try again later." },
+          { error: err.message || "Failed to fetch Instagram story." },
           { status: 503 }
         );
       }
     }
 
-    // === REELS / POSTS / CAROUSEL ===
+    // === DEFAULT (reels/posts/carousels) ===
     const results = await getInstagramMedia(url);
     const first = results.url_list?.[0];
     const media = results.media_details?.[0];
@@ -86,6 +47,7 @@ export async function POST(request) {
     return NextResponse.json({
       type,
       mediaUrl: first,
+      mediaUrls: results.url_list || [],
       thumbnail: media?.thumbnail || first,
       quality: results.quality || [],
       username: postInfo.owner_username || null,
@@ -96,13 +58,19 @@ export async function POST(request) {
       comments: postInfo.comment_count ?? null,
       views: media?.video_view_count || 0,
       postedAt: postInfo.timestamp || null,
-      mediaUrls: results.url_list || [],
     });
   } catch (err) {
     console.error("Server error:", err);
     return NextResponse.json(
-      { error: "Service temporarily unavailable. Please try again." },
+      { error: "Internal server error. Please try again later." },
       { status: 500 }
     );
   }
+}
+
+// Helper to extract username from story URL
+function extractUsernameFromUrl(url) {
+  const regex = /instagram\.com\/stories\/([^/]+)/;
+  const match = url.match(regex);
+  return match?.[1] || null;
 }
