@@ -1,9 +1,10 @@
 'use client';
 import Image from 'next/image';
-import Images from "../../../../public/images/index";
+
 import styles from './AppPromotion.module.scss';
 import { FaDownload } from 'react-icons/fa';
 import Link from 'next/link';
+import Images from '../../../public/images';
 
 export default function AppPromotion() {
     return (

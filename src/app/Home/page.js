@@ -1,12 +1,12 @@
 import React from "react";
 import Downloader from "@/components/downloader/Downloader";
 import WhyUs from "@/components/WhyUs/WhyUs";
-import DownloadDescription from "@/components/common/DownloadDescription/DownloadDescription";
-import AppPromotion from "@/components/common/AppPromotion/AppPromotion";
-import FaqSection from "@/components/common/Faq/Faq";
-import AboutProcess from "@/components/common/AboutProcess/AboutProcess";
 import Images from "../../../public/images/index";
 import { steps, faqs } from "../../dataStore/data";
+import AboutProcess from "@/common/AboutProcess/AboutProcess";
+import AppPromotion from "@/common/AppPromotion/AppPromotion";
+import DownloadDescription from "@/common/DownloadDescription/DownloadDescription";
+import FaqSection from "@/common/Faq/Faq";
 
 function Page() {
   return (
