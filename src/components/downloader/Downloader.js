@@ -19,9 +19,7 @@ export default function Downloader({
   title = "Instagram Downloader",
   subtitle = "Download Instagram Videos, Photos, Reels, IGTV & carousel",
 }) {
-  const [url, setUrl] = useState(
-    "https://www.instagram.com/stories/realhinakhan/3692651193577867044/"
-  );
+  const [url, setUrl] = useState("https://www.instagram.com/p/DM7-yz8p3FF/?img_index=1");
   const [mediaData, setMediaData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -90,7 +88,7 @@ export default function Downloader({
         <nav className={styles.category}>
           {[
             { label: "Video", icon: <FaVideo />, path: "/video" },
-            { label: "Photo", icon: <FaImage />, path: "/photo" },
+            { label: "Posts", icon: <FaImage />, path: "/photo" },
             { label: "Reels", icon: <FaRegCalendarAlt />, path: "/reels" },
             { label: "Story", icon: <MdOutlineSlideshow />, path: "/story" },
             { label: "Igtv", icon: <FaVideo />, path: "/igtv" },

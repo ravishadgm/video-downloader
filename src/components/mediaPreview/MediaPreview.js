@@ -1,4 +1,4 @@
-// components/mediaPreview/MediaPreview.jsx
+
 import ReelPreview from "@/variants/ReelPreview/ReelPreview";
 import CarouselPreview from "@/variants/CarouselPreview/CarouselPreview";
 import StoryPreview from "@/variants/StoryPreview/StoryPreview";
@@ -8,7 +8,6 @@ import ViewerPreview from "@/variants/ViewerPreview/ViewerPreview";
 import styles from "./style.module.scss";
 
 export default function MediaPreview({ mediaData, onShare }) {
-  console.log(mediaData,"mediaData")
   if (!mediaData) return null;
 
   const { type } = mediaData;

@@ -12,7 +12,7 @@ function page() {
         title="IG Carousel Downloader"
         subtitle="Download carousel from Instagram"
       />
-      <CarouselDetails />
+      <CarouselDetails  />
     </>
   );
 }

@@ -4,7 +4,7 @@ export async function fetchStoryFromRapidAPI(username) {
   const options = {
     method: "POST",
     headers: {
-      "x-rapidapi-key": "7eb02db216msh902bd566fbaa81cp19777ajsn5c9a261d9520", // Replace with your actual key in production
+      "x-rapidapi-key": process.env.RAPIDAPI_KEY, 
       "x-rapidapi-host": "instagram120.p.rapidapi.com",
       "Content-Type": "application/json",
     },
