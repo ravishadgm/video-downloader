@@ -1,11 +1,11 @@
 import Downloader from "@/components/downloader/Downloader";
 import React from "react";
-import DownloadDescription from "@/components/common/DownloadDescription/DownloadDescription";
-import AppPromotion from "@/components/common/AppPromotion/AppPromotion";
-import FaqSection from "@/components/common/Faq/Faq";
+import DownloadDescription from "@/common/DownloadDescription/DownloadDescription";
+import AppPromotion from "@/common/AppPromotion/AppPromotion";
+import FaqSection from "@/common/Faq/Faq";
 import Images from "../../../public/images/index";
 import { carouselSteps, carouselFaq } from "../../dataStore/data";
-import AboutProcess from "@/components/common/AboutProcess/AboutProcess";
+import AboutProcess from "@/common/AboutProcess/AboutProcess";
 
 export const metadata = {
   title: "IG Carousel Downloader",
