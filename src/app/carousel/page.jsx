@@ -11,7 +11,8 @@ export const metadata = {
   title: "IG Carousel Downloader",
   description: "Download carousel from Instagram",
 };
-function page() {
+
+export default function page() {
   return (
     <>
       <Downloader
@@ -49,4 +50,4 @@ function page() {
   );
 }
 
-export default page;
+

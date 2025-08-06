@@ -12,8 +12,7 @@ export const metadata = {
   description: "Download Reels from Instagram",
 };
 
-
-function page() {
+export default function page() {
   return (
     <>
       <Downloader
@@ -43,9 +42,6 @@ function page() {
         image={Images.Download}
         faqs={reelsFaq}
       />
-
     </>
   );
 }
-
-export default page;

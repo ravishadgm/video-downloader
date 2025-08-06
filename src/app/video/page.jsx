@@ -12,7 +12,7 @@ export const metadata = {
   description: "Download Instagram videos in high quality for free.",
 };
 
-function page() {
+export default function page() {
   return (
     <>
       <Downloader
@@ -46,9 +46,6 @@ function page() {
         image={Images.Download}
         faqs={videoFaqs}
       />
-
     </>
   );
 }
-
-export default page;

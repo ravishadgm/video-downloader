@@ -12,7 +12,7 @@ export const metadata = {
   description: "Download Instagram stories anonymously and easily.",
 };
 
-function page() {
+export default function page() {
   return (
     <>
       <Downloader
@@ -52,4 +52,3 @@ function page() {
   );
 }
 
-export default page;

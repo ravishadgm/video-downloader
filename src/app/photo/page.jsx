@@ -11,7 +11,8 @@ export const metadata = {
   title: "Instagram Photo Downloader",
   description: "Download Instagram photos in high resolution.",
 };
-function page() {
+
+export default function page() {
   return (
     <>
       <Downloader
@@ -42,9 +43,6 @@ function page() {
         image={Images.Download}
         faqs={photoFaq}
       />
-
     </>
   );
 }
-
-export default page;

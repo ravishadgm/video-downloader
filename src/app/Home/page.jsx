@@ -8,7 +8,7 @@ import AppPromotion from "@/common/AppPromotion/AppPromotion";
 import DownloadDescription from "@/common/DownloadDescription/DownloadDescription";
 import FaqSection from "@/common/Faq/Faq";
 
-function Page() {
+export default function Page() {
   return (
     <>
       <Downloader />
@@ -47,7 +47,6 @@ function Page() {
         description="Carousel, also known as Album or Gallery posts type with multiple photos, videos, or mixed content. If you need to download multiple photos from Instagram, the InstaDl.app is the best to download gallery."
       />
 
-
       <AppPromotion />
       <FaqSection
         title="Frequently asked questions (FAQ)"
@@ -58,5 +57,3 @@ function Page() {
     </>
   );
 }
-
-export default Page;

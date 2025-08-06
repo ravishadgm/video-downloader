@@ -12,7 +12,7 @@ export const metadata = {
   description: "Instagram IGTV Video Download",
 };
 
-function page() {
+export default function page() {
   return (
     <>
       <Downloader
@@ -44,9 +44,6 @@ function page() {
         image={Images.Download}
         faqs={igtvFaq}
       />
-
     </>
   );
 }
-
-export default page;

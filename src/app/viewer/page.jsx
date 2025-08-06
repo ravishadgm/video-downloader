@@ -12,9 +12,7 @@ export const metadata = {
   description: "Download Videos from Instagram",
 };
 
-
-
-function page() {
+export default function page() {
   return (
     <>
       <Downloader
@@ -48,5 +46,3 @@ function page() {
     </>
   );
 }
-
-export default page;
