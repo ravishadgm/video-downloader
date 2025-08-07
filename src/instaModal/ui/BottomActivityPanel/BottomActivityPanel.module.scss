@@ -1,0 +1,48 @@
+.bottomAcitivity {
+  padding: 10px;
+  .shareDownload {
+    gap: 10px;
+    display: flex;
+
+    .shareBtn {
+      background: $gradient-blue;
+      color: #fff;
+
+      border-radius: 10px;
+      width: 50%;
+      padding: 8px 0;
+      font-size: 14px;
+      text-transform: capitalize;
+    }
+  }
+  .acitivityDetails {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    .insideAcitivity {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      svg {
+        font-size: 24px;
+      }
+    }
+  }
+
+  .counterSection {
+    p {
+      color: dimgray;
+      padding-bottom: 10px;
+      font-size: 14px;
+    }
+  }
+  .innerBtn {
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    padding: 8px;
+    width: 100px;
+    text-transform: capitalize;
+    font-size: 14px;
+  }
+}

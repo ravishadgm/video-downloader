@@ -19,7 +19,9 @@ export default function Downloader({
   title = "Instagram Downloader",
   subtitle = "Download Instagram Videos, Photos, Reels, IGTV & carousel",
 }) {
-  const [url, setUrl] = useState("https://www.instagram.com/p/DM7-yz8p3FF/?img_index=1");
+  const [url, setUrl] = useState(
+    "https://www.instagram.com/p/DM7-yz8p3FF/?img_index=1/"
+  );
   const [mediaData, setMediaData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");

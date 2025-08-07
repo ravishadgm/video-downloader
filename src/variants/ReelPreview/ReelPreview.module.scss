@@ -3,8 +3,6 @@
   width: 100%;
   max-width: 400px;
   height: 700px;
-  overflow: hidden;
-  border-radius: 12px;
   background-color: #000;
   margin: 0 auto;
 }
@@ -46,9 +44,10 @@
   color: white;
   align-self: flex-end;
   z-index: 2;
-  max-width: 75%;
+  max-width: 90%;
   pointer-events: none;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  margin-bottom: 60px; // Add space above video controls
 
   .username {
     font-weight: bold;
@@ -58,20 +57,22 @@
   }
 
   .caption {
+    cursor: pointer;
+    position: relative;
     font-size: 14px;
-    margin-bottom: 8px;
-    word-wrap: break-word;
     line-height: 1.4;
-    color: #ffffff;
+    color: #fff;
+    pointer-events: auto;
+    margin-bottom: 8px; // Add space below caption
+    overflow-wrap: break-word;
   }
 
-  .music {
-    font-size: 12px;
-    opacity: 0.8;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    color: #ffffff;
+  .showMore {
+    color: gray;
+    font-weight: 500;
+    font-size: 13px;
+    user-select: none;
+    cursor: pointer;
   }
 }
 
@@ -126,6 +127,7 @@
 
   .leftContent {
     max-width: 70%;
+    margin-bottom: 70px; // Increase margin for mobile
 
     .username {
       font-size: 13px;
@@ -133,10 +135,6 @@
 
     .caption {
       font-size: 13px;
-    }
-
-    .music {
-      font-size: 11px;
     }
   }
 
@@ -155,3 +153,20 @@
     }
   }
 }
+
+
+ .shareDownload {
+    gap: 10px;
+    display: flex;
+    padding: 10px;
+    .innerBtn {
+      background: $gradient-blue;
+      color: #fff;
+
+      border-radius: 10px;
+      width: 50%;
+      padding: 8px 0;
+      font-size: 14px;
+      text-transform: capitalize;
+    }
+  } 
