@@ -47,7 +47,7 @@
   max-width: 90%;
   pointer-events: none;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
-  margin-bottom: 60px; // Add space above video controls
+  margin-bottom: 49px; // Add space above video controls
 
   .username {
     font-weight: bold;
@@ -63,12 +63,13 @@
     line-height: 1.4;
     color: $color-white;
     pointer-events: auto;
-    margin-bottom: 8px; // Add space below caption
+  
     overflow-wrap: break-word;
   }
 
   .showMore {
-    color: gray;
+    color: rgba(255,255,255,.7);
+    
     font-weight: 500;
     font-size: 13px;
     user-select: none;
@@ -127,7 +128,7 @@
 
   .leftContent {
     max-width: 70%;
-    margin-bottom: 70px; // Increase margin for mobile
+    margin-bottom: 49px; // Increase margin for mobile
 
     .username {
       font-size: 13px;

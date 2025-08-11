@@ -3,23 +3,17 @@
 import { useState } from "react";
 import Link from "next/link";
 import MediaPreview from "@/components/mediaPreview/MediaPreview";
-import {
-  FaPaste,
-  FaVideo,
-  FaImage,
-  FaRegCalendarAlt,
-  FaRegEye,
-  FaTimes,
-} from "@/icons/index";
-import { MdOutlineSlideshow, MdOutlineViewCarousel } from "@/icons/index";
 import styles from "./style.module.scss";
+import { mainNavLinks } from "@/dataStore/linksContent";
+import { downloadInstagramMedia } from "@/utils/api";
+import { FaPaste, FaTimes } from "@/icons/index";
 
 export default function Downloader({
   title = "Instagram Downloader",
   subtitle = "Download Instagram Videos, Photos, Reels, IGTV & carousel",
 }) {
   const [url, setUrl] = useState(
-    "https://www.instagram.com/stories/realhinakhan/3693834253560270662/"
+    "https://www.instagram.com/p/DNA9pl6OJNJ/?img_index=1"
   );
   const [mediaData, setMediaData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -27,24 +21,18 @@ export default function Downloader({
 
   const handleDownload = async (e) => {
     e.preventDefault();
+
     if (!url.trim()) {
       setError("Please enter a URL");
       return;
     }
+
     setLoading(true);
     setError("");
     setMediaData(null);
 
     try {
-      const res = await fetch("/api/instagram", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url }),
-      });
-
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Server error");
-
+      const data = await downloadInstagramMedia(url);
       setMediaData(data);
     } catch (err) {
       setError(err.message || "Something went wrong");
@@ -53,33 +41,16 @@ export default function Downloader({
     }
   };
 
-  const handleShare = () => {
-    if (navigator.share && mediaData) {
-      navigator.share({
-        title: "Instagram Media",
-        url: mediaData.mediaUrl,
-      });
-    } else {
-      alert("Sharing is not supported in your browser.");
-    }
-  };
   const handlePaste = async () => {
     try {
       if (!navigator.clipboard) {
         alert("Clipboard not supported. Please paste manually (Ctrl+V).");
         return;
       }
-
       const text = await navigator.clipboard.readText();
       setUrl(text.trim());
-    } catch (err) {
-      if (err.name === "NotAllowedError") {
-        alert(
-          "Clipboard blocked. Click the clipboard icon in address bar to allow, or paste manually (Ctrl+V)."
-        );
-      } else {
-        alert("Paste manually using Ctrl+V (or ⌘+V on Mac).");
-      }
+    } catch {
+      alert("Paste manually using Ctrl+V (or ⌘+V on Mac).");
     }
   };
 
@@ -87,21 +58,9 @@ export default function Downloader({
     <>
       <div className={styles.wrapper}>
         <nav className={styles.category}>
-          {[
-            { label: "Video", icon: <FaVideo />, path: "/video" },
-            { label: "Posts", icon: <FaImage />, path: "/photo" },
-            { label: "Reels", icon: <FaRegCalendarAlt />, path: "/reels" },
-            { label: "Story", icon: <MdOutlineSlideshow />, path: "/story" },
-            { label: "Igtv", icon: <FaVideo />, path: "/igtv" },
-            {
-              label: "Carousel",
-              icon: <MdOutlineViewCarousel />,
-              path: "/carousel",
-            },
-            { label: "Viewer", icon: <FaRegEye />, path: "/viewer" },
-          ].map(({ label, icon, path }, idx) => (
+          {mainNavLinks?.map(({ label, icon, href }, idx) => (
             <div className={styles.category_element} key={idx}>
-              <Link href={path}>
+              <Link href={href}>
                 {icon}
                 <span>{label}</span>
               </Link>
@@ -163,7 +122,7 @@ export default function Downloader({
         {error && <div className={styles.error}>{error}</div>}
       </div>
 
-      <MediaPreview mediaData={mediaData} onShare={handleShare} />
+      <MediaPreview mediaData={mediaData} />
     </>
   );
 }

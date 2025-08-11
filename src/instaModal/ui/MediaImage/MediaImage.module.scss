@@ -1,7 +1,8 @@
 .image {
   width: 100%;
   height: 100%;
-  object-fit: contain; // ✅ Prevents cutting
+      max-height: 700px;
+  object-fit: contain; // Prevents cropping
   display: block;
-  background-color: $black-color; // Optional: looks better with black bars for videos
+  background-color: $black-color; // optional: black background for padding bars
 }

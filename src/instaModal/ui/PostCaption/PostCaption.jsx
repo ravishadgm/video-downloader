@@ -26,7 +26,7 @@ export default function PostCaption({ username, caption = "" }) {
         ))}
         {shouldTruncate && (
           <button onClick={toggleExpanded} className={styles.more}>
-            {expanded ? " show less" : "show more"}
+            {expanded ? "less" : "... more"}
           </button>
         )}
       </span>

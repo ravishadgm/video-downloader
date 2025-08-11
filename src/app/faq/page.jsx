@@ -1,5 +1,5 @@
 import React from "react";
-import { mainFaq } from "@/dataStore/data";
+import { mainFaq } from "@/dataStore/faqContent";
 import FaqSection from "@/common/Faq/Faq";
 
 export default function page() {

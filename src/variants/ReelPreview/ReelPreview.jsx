@@ -7,6 +7,7 @@ import { FaHeart, FaEye, FaPaperPlane } from "react-icons/fa";
 import styles from "./ReelPreview.module.scss";
 
 export default function ReelPreview({ data, onShare }) {
+  console.log(onShare,"onShareonShareonShareonShare")
   const [isPlaying, setIsPlaying] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const videoRef = useRef(null);
@@ -52,7 +53,7 @@ export default function ReelPreview({ data, onShare }) {
             {isExpanded ? (
               <>
                 {data.caption || "Video caption"}
-                <span className={styles.showMore}> Show less</span>
+                <span className={styles.showMore}> ... less</span>
               </>
             ) : (
               <>
@@ -60,11 +61,11 @@ export default function ReelPreview({ data, onShare }) {
                 {(data.caption || "").length > 80 && (
                   <>
                     <span>...</span>
-                    <span className={styles.showMore}> Show more</span>
+                    <span className={styles.showMore}> ... more</span>
                   </>
                 )}
                 {(data.caption || "").length <= 80 && (
-                  <span className={styles.showMore}> Show more</span>
+                  <span className={styles.showMore}> ... more</span>
                 )}
               </>
             )}

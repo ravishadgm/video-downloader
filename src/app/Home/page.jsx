@@ -1,7 +1,7 @@
 import React from "react";
 import Downloader from "@/components/downloader/Downloader";
 import WhyUs from "@/components/WhyUs/WhyUs";
-import { steps, faqs } from "@/dataStore/data";
+import { steps, faqs } from "@/dataStore/faqContent";
 import AboutProcess from "@/common/AboutProcess/AboutProcess";
 import AppPromotion from "@/common/AppPromotion/AppPromotion";
 import DownloadDescription from "@/common/DownloadDescription/DownloadDescription";

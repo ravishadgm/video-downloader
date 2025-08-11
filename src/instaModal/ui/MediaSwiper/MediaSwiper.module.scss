@@ -2,13 +2,6 @@
   position: relative;
 }
 .imageWrapper {
-.image {
-  width: 100%;
-  height: 500px;
-  object-fit: contain; // ✅ Prevents cutting
-  display: block;
-  background-color: $black-color // Optional: looks better with black bars for videos
-}
 
   .actions {
     z-index: 5;
@@ -43,3 +36,4 @@
     }
   }
 }
+
