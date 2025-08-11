@@ -10,7 +10,7 @@
 
 .mediaItem {
   width: calc(33.333% - 14px); // Default: 3 per row
-  background-color: #fff;
+  background-color: $color-white;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   padding: 0 0 8px 0;
@@ -63,12 +63,12 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 15px;
-    color: white;
+    color: $color-white;
     cursor: pointer;
 
     &:hover {
       background-color: #e0e0e0;
-      color: black;
+      color: $black-color;
     }
   }
 }

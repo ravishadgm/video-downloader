@@ -3,5 +3,5 @@
   height: 100%;
   object-fit: contain; // ✅ Prevents cutting
   display: block;
-  background-color: #000; // Optional: looks better with black bars for videos
+  background-color: $black-color; // Optional: looks better with black bars for videos
 }

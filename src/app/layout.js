@@ -1,8 +1,7 @@
 import Script from "next/script";
-import "../styles/globals.scss";
 import Header from "@/layout/Header/Page";
 import Footer from "@/layout/Footer/Page";
-
+import "../styles/globals.scss";
 
 
 export default function RootLayout({ children }) {

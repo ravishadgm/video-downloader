@@ -1,20 +1,29 @@
 "use client";
-
 import { useRef, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
+import { FaChevronLeft, FaChevronRight, FaPlay, FaPause } from "@/icons/index";
 import styles from "./StoryPreview.module.scss";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 export default function StoryPreview({ stories = [] }) {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+  const videoRef = useRef(null);
   const [swiperInstance, setSwiperInstance] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeDuration, setActiveDuration] = useState(4000);
+  const [isPlaying, setIsPlaying] = useState(true);
+
+  const flattenedStories = stories.reduce((acc, story) => {
+    acc.push(story);
+    if (story.reel_media && story.reel_media.length > 0) {
+      acc.push(...story.reel_media);
+    }
+    return acc;
+  }, []);
 
   // Initialize Swiper navigation
   useEffect(() => {
@@ -26,9 +35,8 @@ export default function StoryPreview({ stories = [] }) {
     }
   }, [swiperInstance]);
 
-  // Detect video duration or fallback
   useEffect(() => {
-    const activeStory = stories[currentIndex];
+    const activeStory = flattenedStories[currentIndex];
     const isVideo = activeStory?.video_versions?.[0]?.url;
 
     if (isVideo) {
@@ -37,12 +45,16 @@ export default function StoryPreview({ stories = [] }) {
       video.onloadedmetadata = () => {
         setActiveDuration(video.duration * 1000);
       };
+      video.onerror = () => {
+        console.warn("Video failed to load, using default duration");
+        setActiveDuration(4000);
+      };
     } else {
       setActiveDuration(4000);
     }
-  }, [currentIndex, stories]);
+  }, [currentIndex, flattenedStories]);
 
-  // Auto move to next slide
+  // Auto-slide timer
   useEffect(() => {
     const timer = setTimeout(() => {
       swiperInstance?.slideNext();
@@ -50,7 +62,7 @@ export default function StoryPreview({ stories = [] }) {
     return () => clearTimeout(timer);
   }, [activeDuration, swiperInstance, currentIndex]);
 
-  if (!stories.length) {
+  if (!flattenedStories.length) {
     return (
       <div className={styles.storyEmpty}>
         <p>No stories found for this user.</p>
@@ -58,11 +70,22 @@ export default function StoryPreview({ stories = [] }) {
     );
   }
 
+  const togglePlayPause = () => {
+    if (!videoRef.current) return;
+
+    if (isPlaying) {
+      videoRef.current.pause();
+    } else {
+      videoRef.current.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
+
   return (
     <div className={styles.storyWrapper}>
       {/* Progress bars */}
       <div className={styles.progressRow}>
-        {stories.map((_, idx) => (
+        {flattenedStories.map((_, idx) => (
           <div key={idx} className={styles.progressContainer}>
             <div
               className={`${styles.progressFill} ${
@@ -83,43 +106,86 @@ export default function StoryPreview({ stories = [] }) {
         modules={[Navigation]}
         loop={false}
         onSwiper={setSwiperInstance}
-        onSlideChange={(swiper) => setCurrentIndex(swiper.activeIndex)}
+        onSlideChange={(swiper) => {
+          setCurrentIndex(swiper.activeIndex);
+
+          // Play the active video if it exists
+          const activeVideo =
+            swiper.slides[swiper.activeIndex].querySelector("video");
+          if (activeVideo) {
+            activeVideo.currentTime = 0; // restart from beginning
+            activeVideo
+              .play()
+              .catch((err) => console.warn("Auto-play failed", err));
+          }
+        }}
+        className={styles.storySwiper}
       >
-        {stories.map((story, idx) => {
+        {flattenedStories.map((story, idx) => {
           const video = story.video_versions?.[0]?.url;
-          const image = story.image_versions2?.candidates?.[0]?.url;
+          const image =
+            story.image_versions2?.candidates?.[0]?.url ||
+            story.display_resources?.[0]?.src ||
+            story.image_versions?.standard_resolution?.url;
 
           return (
             <SwiperSlide key={idx}>
               <div className={styles.storySlide}>
                 {video ? (
-                  <video
-                    src={video}
-                    autoPlay
-                    muted
+                  <>
+                    <video
+                      ref={idx === currentIndex ? videoRef : null}
+                      src={video}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      className={styles.storyMedia}
+                      onError={(e) => console.warn("Video failed to load:", e)}
+                    />
+                  </>
+                ) : image ? (
+                  <img
+                    src={image}
+                    alt={`story-${idx}`}
                     className={styles.storyMedia}
+                    onError={(e) => {
+                      const altImage =
+                        story.display_resources?.[1]?.src ||
+                        story.image_versions?.low_resolution?.url;
+                      if (altImage && e.target.src !== altImage) {
+                        e.target.src = altImage;
+                      }
+                    }}
                   />
                 ) : (
-                  image && (
-                    <img
-                      src={image}
-                      alt={`story-${idx}`}
-                      className={styles.storyMedia}
-                    />
-                  )
+                  <div className={styles.storyPlaceholder}>
+                    <p>Story content not available</p>
+                  </div>
                 )}
 
-                {/* Username */}
-                <div className={styles.storyUser}>
-                  {story.user?.profile_pic_url && (
-                    <img
-                      src={story.user.profile_pic_url}
-                      alt={story.user?.username}
-                      className={styles.storyAvatar}
-                      onError={(e) => (e.target.style.display = "none")}
-                    />
+                {/* Top bar with username + play/pause */}
+                <div className={styles.storyTopBar}>
+                  <div className={styles.storyUser}>
+                    {story.user?.profile_pic_url && (
+                      <img
+                        src={story.user.profile_pic_url}
+                        alt={story.user?.username}
+                        className={styles.storyAvatar}
+                        onError={(e) => (e.target.style.display = "none")}
+                      />
+                    )}
+                    <span>@{story.user?.username || "unknown"}</span>
+                  </div>
+
+                  {video && idx === currentIndex && (
+                    <button
+                      className={styles.playPauseButton}
+                      onClick={togglePlayPause}
+                    >
+                      {isPlaying ? <FaPause /> : <FaPlay />}
+                    </button>
                   )}
-                  <span>@{story.user?.username}</span>
                 </div>
               </div>
             </SwiperSlide>
@@ -128,10 +194,16 @@ export default function StoryPreview({ stories = [] }) {
       </Swiper>
 
       {/* Navigation buttons */}
-      <button ref={prevRef} className={`${styles.navButton} ${styles.prevButton}`}>
+      <button
+        ref={prevRef}
+        className={`${styles.navButton} ${styles.prevButton}`}
+      >
         <FaChevronLeft />
       </button>
-      <button ref={nextRef} className={`${styles.navButton} ${styles.nextButton}`}>
+      <button
+        ref={nextRef}
+        className={`${styles.navButton} ${styles.nextButton}`}
+      >
         <FaChevronRight />
       </button>
     </div>

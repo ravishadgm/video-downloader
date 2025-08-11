@@ -6,7 +6,6 @@
 .container {
   margin: 64px auto;
   max-width: 1024px;
-//   height:50vh;
 
     @media(max-width:768px){
         padding:0px 20px;
@@ -32,7 +31,7 @@
   .content{
     
     p{
-        color: #000000b3;
+        color: $text-secondary;
         font-size: 18px;
         font-weight: 400;
         padding:10px 0px;
@@ -51,7 +50,7 @@
               text-decoration-thickness: 2px; 
               
               &:focus-visible {
-                outline: 3px solid #0066cc;
+                outline: 3px solid $blue-outline;
               }
             }
         }

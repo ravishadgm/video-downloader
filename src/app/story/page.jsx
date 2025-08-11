@@ -1,11 +1,11 @@
-import Downloader from "@/components/downloader/Downloader";
 import React from "react";
+import Downloader from "@/components/downloader/Downloader";
 import DownloadDescription from "@/common/DownloadDescription/DownloadDescription";
 import AppPromotion from "@/common/AppPromotion/AppPromotion";
 import FaqSection from "@/common/Faq/Faq";
-import Images from "../../../public/images/index";
-import { storySteps, storyFaq } from "../../dataStore/data";
 import AboutProcess from "@/common/AboutProcess/AboutProcess";
+import { storySteps, storyFaq } from "@/dataStore/data";
+import Images from "@/utils/images";
 
 export const metadata = {
   title: "Instagram Story Downloader",
@@ -47,8 +47,6 @@ export default function page() {
         image={Images.Download}
         faqs={storyFaq}
       />
-
     </>
   );
 }
-

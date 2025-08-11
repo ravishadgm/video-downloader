@@ -3,7 +3,7 @@
   width: 100%;
   max-width: 400px;
   height: 700px;
-  background-color: #000;
+  background-color: $black-color;
   margin: 0 auto;
 }
 
@@ -41,7 +41,7 @@
 }
 
 .leftContent {
-  color: white;
+  color: $color-white;
   align-self: flex-end;
   z-index: 2;
   max-width: 90%;
@@ -53,7 +53,7 @@
     font-weight: bold;
     margin-bottom: 6px;
     font-size: 14px;
-    color: #ffffff;
+    color: $color-white;
   }
 
   .caption {
@@ -61,7 +61,7 @@
     position: relative;
     font-size: 14px;
     line-height: 1.4;
-    color: #fff;
+    color: $color-white;
     pointer-events: auto;
     margin-bottom: 8px; // Add space below caption
     overflow-wrap: break-word;
@@ -94,7 +94,7 @@
     background-color: rgba(0, 0, 0, 0.45);
     backdrop-filter: blur(5px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    color: #fff;
+    color: $color-white;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -161,7 +161,7 @@
     padding: 10px;
     .innerBtn {
       background: $gradient-blue;
-      color: #fff;
+      color: $color-white;
 
       border-radius: 10px;
       width: 50%;

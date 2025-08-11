@@ -7,7 +7,7 @@
   height: 500px;
   object-fit: contain; // ✅ Prevents cutting
   display: block;
-  background-color: #000; // Optional: looks better with black bars for videos
+  background-color: $black-color // Optional: looks better with black bars for videos
 }
 
   .actions {
@@ -19,7 +19,7 @@
     gap: 8px;
 
     .actionButton {
-      background: rgba(255, 255, 255, 0.95);
+      background: $color-white;
       border: 1px solid #ccc;
       border-radius: 6px;
       padding: 10px;
@@ -32,12 +32,12 @@
       transition: background 0.2s ease;
 
       &:hover {
-        background: rgba(230, 230, 230, 0.95);
+        background: $light-gray;
       }
 
       svg {
         font-size: 18px;
-        color: #333;
+        color: $dark-gray;
         pointer-events: none;
       }
     }

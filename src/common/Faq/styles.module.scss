@@ -17,7 +17,7 @@
         text-align: center;
         padding-bottom:20px;
         border-bottom: 2px solid transparent;
-        border-image: linear-gradient(108deg, rgba(0,158,226,.9), #8b2fff, rgba(245,5,79,.9)) 1;
+        border-image:$gradient-color 1;
 
         @media(max-width:480px){
             font-size: 24px;
@@ -27,7 +27,7 @@
     .intro {
         text-align: center;
         font-size: 18px;
-        color: #000000B3;
+        color: $text-secondary;
         margin: 20px auto;
         font-weight: 400;
          
@@ -58,7 +58,7 @@
         p {
             font-size: 18px;
             margin: 10px auto 0;
-            color: #000000B3;
+            color: $text-secondary;
 
             @media(max-width:480px){
                 font-size: 16px;
@@ -72,7 +72,7 @@
   .faq {
     .container {
       h2 {
-                border-bottom: 3px solid #000;
+                border-bottom: 3px solid $black-color;
                 border-image: none;
             }
         }

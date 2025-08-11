@@ -1,11 +1,12 @@
-import Downloader from "@/components/downloader/Downloader";
 import React from "react";
+import Downloader from "@/components/downloader/Downloader";
 import DownloadDescription from "@/common/DownloadDescription/DownloadDescription";
 import AppPromotion from "@/common/AppPromotion/AppPromotion";
 import FaqSection from "@/common/Faq/Faq";
-import Images from "../../../public/images/index";
-import { viewSteps, viewFaq } from "../../dataStore/data";
 import AboutProcess from "@/common/AboutProcess/AboutProcess";
+import { viewSteps, viewFaq } from "@/dataStore/data";
+// import Images from "../../../public/images/index";
+import Images from "@/utils/images";
 
 export const metadata = {
   title: "Instagram Video Downloader",

@@ -1,10 +1,10 @@
 import { useState, useRef } from "react";
-import styles from "./ReelPreview.module.scss";
-import { FaHeart, FaEye, FaPaperPlane } from "react-icons/fa";
 import { formatNumber } from "@/instaModal/hooks/formatNumber/formatNumber";
 import BottomActivityPanel from "@/instaModal/ui/BottomActivityPanel/BottomActivityPanel";
 import { handleShare } from "@/instaModal/hooks/share/share";
 import { handleDownload } from "@/instaModal/hooks/download/download";
+import { FaHeart, FaEye, FaPaperPlane } from "react-icons/fa";
+import styles from "./ReelPreview.module.scss";
 
 export default function ReelPreview({ data, onShare }) {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -26,7 +26,7 @@ export default function ReelPreview({ data, onShare }) {
   };
 
   const toggleCaption = () => setIsExpanded(!isExpanded);
-console.log(data.mediaUrls[0],"data.mediaUrlsdata.mediaUrls")
+  console.log(data.mediaUrls[0], "data.mediaUrlsdata.mediaUrls");
   return (
     <div className={styles.reelContainer}>
       <video
@@ -90,7 +90,7 @@ console.log(data.mediaUrls[0],"data.mediaUrlsdata.mediaUrls")
       <div className={styles.shareDownload}>
         <button
           className={styles.innerBtn}
-        onClick={() => handleShare(data?.mediaUrls[0])}
+          onClick={() => handleShare(data?.mediaUrls[0])}
         >
           Share
         </button>

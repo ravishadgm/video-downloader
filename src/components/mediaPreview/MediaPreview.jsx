@@ -1,34 +1,14 @@
-import ReelPreview from "@/variants/ReelPreview/ReelPreview";
-import CarouselPreview from "@/variants/CarouselPreview/CarouselPreview";
-import StoryPreview from "@/variants/StoryPreview/StoryPreview";
-import PhotoPostPreview from "@/variants/PhotoPostPreview/PhotoPostPreview";
-import IGTVPreview from "@/variants/IGTVPreview/IGTVPreview";
+"use client";
+
+import getPreviewComponent from "./helper/getPreviewComponent";
 import styles from "./style.module.scss";
 
 export default function MediaPreview({ mediaData, onShare }) {
   if (!mediaData) return null;
 
-  const { type } = mediaData;
-  const renderPreview = () => {
-    switch (type?.toLowerCase()) {
-      case "reel":
-        return <ReelPreview data={mediaData} onShare={onShare} />;
-
-      case "story":
-        return <StoryPreview stories={mediaData.stories} onShare={onShare} />;
-
-      case "photo":
-      case "viewer":
-        return <PhotoPostPreview data={mediaData} onShare={onShare} />;
-
-      case "igtv":
-        return <IGTVPreview data={mediaData} onShare={onShare} />;
-
-      case "carousel":
-      default:
-        return <CarouselPreview data={mediaData} onShare={onShare} />;
-    }
-  };
-
-  return <div className={styles.media_container}>{renderPreview()}</div>;
+  return (
+    <div className={styles.media_container}>
+      {getPreviewComponent(mediaData.type, { data: mediaData, onShare })}
+    </div>
+  );
 }

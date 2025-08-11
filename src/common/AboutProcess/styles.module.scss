@@ -50,7 +50,7 @@
 
     p {
       font-size: 16px;
-      color:#000000B3;
+      color:$text-secondary;
     }
   }
 }
@@ -94,7 +94,7 @@
   text-align: center;
   padding-bottom:20px;
   border-bottom: 2px solid transparent;
-  border-image: linear-gradient(108deg, rgba(0,158,226,.9), #8b2fff, rgba(245,5,79,.9)) 1;
+  border-image:$gradient-color 1;
 
   @media(max-width:480px){
     font-size: 24px;
@@ -149,7 +149,7 @@
 
         h4 {
              text-align: center;
-            color: #be185d;
+            color: $magenta-color;
             font-size: 24px;
             font-weight: 700;
             padding-bottom: 16px;

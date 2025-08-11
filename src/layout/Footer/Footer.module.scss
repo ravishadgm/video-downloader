@@ -111,7 +111,7 @@
     
     .link {
       &:focus-visible {
-              outline: 3px solid #0066cc;
+              outline: 3px solid $blue-outline;
               background-color: #fff;
             }
         }

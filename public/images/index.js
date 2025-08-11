@@ -22,7 +22,6 @@ const images = {
     videoImg2,
     videoImg3,
     videoImg4
-
 }
 
 export default images;

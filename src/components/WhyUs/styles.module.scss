@@ -21,7 +21,7 @@
         color: $primary-color;
         padding-bottom:20px;
         border-bottom: 2px solid transparent;
-        border-image: linear-gradient(108deg, rgba(0,158,226,.9), #8b2fff, rgba(245,5,79,.9)) 1;
+        border-image:$gradient-color 1;
 
         @media(max-width:768px){
             font-size: 28px;
@@ -35,7 +35,7 @@
   
     .description {
         font-size: 18px;
-        color:#000000B3;
+        color:$text-secondary;
         padding:20px;
 
         @media(max-width:768px){
@@ -88,7 +88,7 @@
         .featureTitle {
             font-size: 24px;
             font-weight: 700;
-            color: #be185d;
+            color: $magenta-color;
             padding-bottom:20px;
 
             
@@ -103,7 +103,7 @@
         border-top: 2px solid #ebecef;
         font-size: 18px;
         padding:20px 10px;
-        color:#000000B3;
+        color:$text-secondary;
 
         
         @media(max-width:768px){

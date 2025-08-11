@@ -3,9 +3,9 @@ import React from "react";
 import DownloadDescription from "@/common/DownloadDescription/DownloadDescription";
 import AppPromotion from "@/common/AppPromotion/AppPromotion";
 import FaqSection from "@/common/Faq/Faq";
-import Images from "../../../public/images/index";
-import { carouselSteps, carouselFaq } from "../../dataStore/data";
 import AboutProcess from "@/common/AboutProcess/AboutProcess";
+import Images from "@/utils/images";
+import { carouselSteps, carouselFaq } from "@/dataStore/data";
 
 export const metadata = {
   title: "IG Carousel Downloader",
@@ -49,5 +49,3 @@ export default function page() {
     </>
   );
 }
-
-

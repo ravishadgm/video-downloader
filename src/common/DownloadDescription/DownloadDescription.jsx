@@ -1,77 +1,101 @@
 "use client";
 
-import React from 'react';
+import React from "react";
+import Image from "next/image";
 import styles from "./styles.module.scss";
-import Image from 'next/image';
 
 export default function DownloadDescription({
-    title,
-    image,
-    description,
-    heading,
-    headingDescription,
-    secondTitle,
-    secondImage,
-    secondDescription,
-    imageAlt = "Feature descriptive illustrate",
+  title,
+  image,
+  description,
+  heading,
+  headingDescription,
+  secondTitle,
+  secondImage,
+  secondDescription,
+  imageAlt = "Feature descriptive illustrate",
 }) {
+  const headingId = React.useId();
+  const firstSectionId = React.useId();
+  const secondSectionId = React.useId();
 
-    const headingId = React.useId();
-    const firstSectionId = React.useId();
-    const secondSectionId = React.useId();
+  return (
+    <section
+      className={styles.wrapper}
+      aria-labelledby={heading ? headingId : undefined}
+      role="region"
+    >
+      <div className={styles.container}>
+        {heading && (
+          <h3 className={styles.subheading} id={headingId}>
+            {heading}
+          </h3>
+        )}
+        {headingDescription && (
+          <p
+            className={styles.headingDescription}
+            aria-describedby={heading ? headingId : undefined}
+          >
+            {headingDescription}
+          </p>
+        )}
 
-    return (
-        <section className={styles.wrapper}
-            aria-labelledby={heading ? headingId : undefined}
-            role="region"
+        <div
+          className={styles.intro}
+          aria-labelledby={`${firstSectionId}-title`}
+          role="article"
         >
-            <div className={styles.container}>
-                {heading && <h3 className={styles.subheading} id={headingId}>{heading}</h3>}
-                {headingDescription && <p className={styles.headingDescription} aria-describedby={heading ? headingId : undefined}>{headingDescription}</p>}
+          <div className={styles.description}>
+            <h2 id={`${firstSectionId}-title`}>{title}</h2>
+            <p>{description}</p>
+          </div>
+          <div
+            className={styles.imageWrapper}
+            role="img"
+            aria-labelledby={`${firstSectionId}-title`}
+          >
+            <Image
+              src={image}
+              alt={imageAlt}
+              fill
+              className={styles.imageDetail}
+            />
+          </div>
+        </div>
 
-                <div className={styles.intro} aria-labelledby={`${firstSectionId}-title`}
-                    role="article">
-                    <div className={styles.description}>
-                        <h2 id={`${firstSectionId}-title`}>{title}</h2>
-                        <p>{description}</p>
-                    </div>
-                    <div className={styles.imageWrapper}
-                        role="img"
-                        aria-labelledby={`${firstSectionId}-title`}
-                    >
-                        <Image
-                            src={image}
-                            alt={imageAlt}
-                            fill
-                            className={styles.imageDetail}
-
-                        />
-                    </div>
-                </div>
-
-                {(secondTitle || secondImage || secondDescription) && (
-                    <div className={styles.secondIntro} aria-labelledby={secondTitle ? `${secondSectionId}-title` : undefined}
-                        role="article"
-                    >
-                        {secondImage && (
-                            <div className={styles.secondImageWrapper} role="img"
-                                aria-labelledby={secondTitle ? `${secondSectionId}-title` : undefined}
-                            >
-                                <Image
-                                    src={secondImage}
-                                    alt={imageAlt}
-                                    fill
-                                    className={styles.secondImageDetail}
-                                />
-                            </div>
-                        )}
-                        <div className={styles.description}>
-                            {secondTitle && <h2 id={`${secondSectionId}-title`}>{secondTitle}</h2>}
-                            {secondDescription && <p>{secondDescription}</p>}
-                        </div>
-                    </div>
-                )}
+        {(secondTitle || secondImage || secondDescription) && (
+          <div
+            className={styles.secondIntro}
+            aria-labelledby={
+              secondTitle ? `${secondSectionId}-title` : undefined
+            }
+            role="article"
+          >
+            {secondImage && (
+              <div
+                className={styles.secondImageWrapper}
+                role="img"
+                aria-labelledby={
+                  secondTitle ? `${secondSectionId}-title` : undefined
+                }
+              >
+                <Image
+                  src={secondImage}
+                  alt={imageAlt}
+                  fill
+                  className={styles.secondImageDetail}
+                />
+              </div>
+            )}
+            <div className={styles.description}>
+              {secondTitle && (
+                <h2 id={`${secondSectionId}-title`}>{secondTitle}</h2>
+              )}
+              {secondDescription && <p>{secondDescription}</p>}
             </div>
-        </section>
-    );
+          </div>
+        )}
+      </div>
+    </section>
+  );
 }

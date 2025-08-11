@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
+import { MdDownload, MdDevices, MdThumbUp, MdSecurity } from "@/icons/index";
 import styles from "./styles.module.scss";
-import { MdDownload, MdDevices, MdThumbUp, MdSecurity } from "react-icons/md";
 
 export default function WhyUs() {
   const titleId = React.useId();

@@ -1,9 +1,8 @@
-// components/Downloader.jsx
 "use client";
 
 import { useState } from "react";
 import Link from "next/link";
-import styles from "./style.module.scss";
+import MediaPreview from "@/components/mediaPreview/MediaPreview";
 import {
   FaPaste,
   FaVideo,
@@ -11,9 +10,9 @@ import {
   FaRegCalendarAlt,
   FaRegEye,
   FaTimes,
-} from "react-icons/fa";
-import { MdOutlineSlideshow, MdOutlineViewCarousel } from "react-icons/md";
-import MediaPreview from "../mediaPreview/MediaPreview";
+} from "@/icons/index";
+import { MdOutlineSlideshow, MdOutlineViewCarousel } from "@/icons/index";
+import styles from "./style.module.scss";
 
 export default function Downloader({
   title = "Instagram Downloader",

@@ -1,12 +1,12 @@
 import React from "react";
 import Downloader from "@/components/downloader/Downloader";
 import WhyUs from "@/components/WhyUs/WhyUs";
-import Images from "../../../public/images/index";
-import { steps, faqs } from "../../dataStore/data";
+import { steps, faqs } from "@/dataStore/data";
 import AboutProcess from "@/common/AboutProcess/AboutProcess";
 import AppPromotion from "@/common/AppPromotion/AppPromotion";
 import DownloadDescription from "@/common/DownloadDescription/DownloadDescription";
 import FaqSection from "@/common/Faq/Faq";
+import Images from "@/utils/images";
 
 export default function Page() {
   return (

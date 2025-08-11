@@ -11,9 +11,9 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  background: linear-gradient(108deg, rgba(0, 158, 226, .9) -57.13%, #8b2fff 11.08%, rgba(245, 5, 79, .9) 102.57%);
+  background: $gradient-color;
   border-radius: 10px;
-  color: white;
+  color: $color-white;
 
   @media (max-width: 973px) {
     grid-template-columns: 1fr;
@@ -103,7 +103,7 @@
 }
 
 .installBtn {
-  background: #fff;
+  background: $color-white;
   color: #141414;
   font-size:20px;
   font-weight: 700;
