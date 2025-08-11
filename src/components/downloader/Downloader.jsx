@@ -12,9 +12,7 @@ export default function Downloader({
   title = "Instagram Downloader",
   subtitle = "Download Instagram Videos, Photos, Reels, IGTV & carousel",
 }) {
-  const [url, setUrl] = useState(
-    "https://www.instagram.com/p/DNA9pl6OJNJ/?img_index=1"
-  );
+  const [url, setUrl] = useState("");
   const [mediaData, setMediaData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -121,8 +119,16 @@ export default function Downloader({
 
         {error && <div className={styles.error}>{error}</div>}
       </div>
-
-      <MediaPreview mediaData={mediaData} />
+      {loading ? (
+        <div className={styles.loaderContainer}>
+          <div className={styles.spinner} />
+          <p className={styles.loaderMessage}>
+            We are downloading the stories. Please wait :)
+          </p>
+        </div>
+      ) : (
+        <MediaPreview mediaData={mediaData} />
+      )}
     </>
   );
 }
