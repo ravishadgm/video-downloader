@@ -65,10 +65,10 @@ export default function Page({ params }) {
             <p>
               Email:{" "}
               <a
-                href="mailto:support@instadl.app"
+                href="mailto:resilient.tech001@gmail.com"
                 className={styles.contactLink}
               >
-                support@instadl.app
+                resilient.tech001@gmail.com
               </a>
             </p>
           </section>

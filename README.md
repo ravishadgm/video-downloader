@@ -23,7 +23,7 @@
 
 2. **Paste into InstaDL**
 
-   - Go to [InstaDL](https://yourwebsite.com).
+   - Go to [InstaDL](https://video-downloader-sigma-seven.vercel.app/).
    - Paste the link into the search box.
 
 3. **Click Download**
@@ -62,16 +62,16 @@ No 🚫 — InstaDL only works with public Instagram content.
 
 ## 📜 Disclaimer
 
-This tool is for **personal use only**. Downloading copyrighted content without permission may violate Instagram’s terms and applicable laws.
+This tool is for as per your own risk. Downloading copyrighted content without permission may violate Instagram’s terms and applicable laws.
 
 ---
 
 ## 🔗 Live Demo
 
-👉 [Visit InstaDL Now](https://yourwebsite.com)
+👉 [Visit InstaDL Now](https://video-downloader-sigma-seven.vercel.app/)
 
 ---
 
 ## 📧 Contact
 
-For business inquiries, contact us at: **your@email.com**
+For business inquiries, contact us at: resilient.tech001@gmail.com

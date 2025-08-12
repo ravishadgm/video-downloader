@@ -23,11 +23,11 @@ export default function page() {
           <p>
             Contact us by email:{" "}
             <a
-              href="mailto:support@instadl.app"
+              href="mailto:resilient.tech001@gmail.com"
               className={styles.link}
               aria-label="Send email to support at instadl.app"
             >
-              support@instadl.app
+              resilient.tech001@gmail.com
             </a>
           </p>
         </div>
