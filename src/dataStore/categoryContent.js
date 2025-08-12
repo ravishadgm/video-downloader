@@ -26,10 +26,9 @@ export const categoryContent = {
       image: Images.Download,
       title: "Download Instagram Videos",
       description:
-        "Discover a world of engaging content on Instagram and bring your favorite videos closer with InstaDl. This simple online tool allows you to easily download Instagram videos anytime without restrictions. InstaDl makes it easy to download any number of videos for offline viewing again in a few simple clicks!",
-      heading: "How to download Instagram Reels?",
+        "Explore a variety of interesting content on Instagram and get your favorite videos with InstaDl. This easy online tool lets you download Instagram videos anytime, without any limits. InstaDl lets you download as many videos as you want for watching offline, all with just a few simple steps.",
       smallDescription:
-        "Here are those three easy and quickest steps to download an Instagram video:",
+        "Here are the three simple and fastest ways to download an Instagram video.",
       steps: videoSteps,
     },
     downloadDescription: {
@@ -48,44 +47,37 @@ export const categoryContent = {
     faq: {
       title: "Frequently asked questions (FAQ)",
       intro:
-        "This FAQ provides information on frequent questions or concerns about the InstaDl.app downloader. If you can't find the answer to your question, feel free to ask through email on our contact page.",
+        "This FAQ answers common questions or worries people have about the InstaDl.app downloader. If you don't find the information you're looking for, you can send us an email through our contact page.",
       image: Images.Download,
       items: videoFaqs,
     },
   },
-
   carousel: {
     title: "IG Carousel Downloader",
     subtitle: "Download carousel from Instagram",
     about: {
       image: Images.Download,
       title: "Download Instagram Carousels",
-      description:
-        "For all Instagram users, the term  Instagram carousel is well known, and it's widely used on this social media platform. This post with multiple photos or videos, which can be viewed by swiping or clicking left, was developed to catch the attention while scrolling down on a page. Now, there is no need to wonder if one can download multiple Instagram photos from a carousel post. We made it possible for you. Try our Instagram downloader and save images from Instagram and mixed content containing photos AND videos.",
-      heading: "How to download Instagram carousel posts?",
+      description: `Many Instagram users are familiar with the term "Instagram carousel." It's a type of post that includes several photos or videos, and you can swipe left or click to view them. This format helps grab attention as you scroll through the app. Now, you don't have to wonder if you can download multiple photos from a carousel post. We've made it easy for you. Use our Instagram downloader to save images and mixed content that includes both photos and videos."      heading: "How to download Instagram carousel posts?`,
       smallDescription:
         "Instagram carousel posts can now be downloaded and saved fast and easily. In just three steps, you will get the joy of delighting your eyes while watching your favorite photos",
       steps: carouselSteps,
     },
     downloadDescription: {
       heading: "Carousel Downloader",
-      headingDescription:
-        "Instagram is a social media platform that allows users to post stories and share them with their followers. You can also create stories and highlights similar to Snapchat stories. Our website allows you to download Instagram story with one click!",
+      headingDescription: `Instagram is a social media app where people can share stories and show them to their friends. You can make stories and save them in highlights, just like on Snapchat. Our site lets you download Instagram stories with just one click!`,
       image: Images.videoImg3,
       title: "Album Downloader",
-      description:
-        "It has always been challenging to download an Instagram carousel post. You must paste the link of the Instagram carousel post without searching the source code or photo link. It is 100% safe and secure, as all photos AND videos are downloaded from the Instagram server.",
+      description: `It has always been hard to download an Instagram carousel post. You just need to paste the link of the carousel post without having to look through the source code or find a photo link. It is completely safe and secure because all the photos and videos are downloaded directly from the Instagram server.`,
       link: "/carousel",
       secondImage: Images.DownloadTwo,
       secondTitle: "Download multiple photos",
-      secondDescription:
-        "The online Instagram multiple photos downloading tool will help anyone who wants free photo downloading. Even the largest pictures can now be saved in high quality and originality. The HD images and videos from IG are available by using this Instagram downloader.",
+      secondDescription: `The online Instagram tool lets you download multiple photos for free. It works for even the biggest images, saving them in high quality and keeping their original look. You can get HD images and videos from Instagram using this downloader.`,
       secondLink: "/carousel",
     },
     faq: {
       title: "Frequently asked questions (FAQ)",
-      intro:
-        "This FAQ provides information on frequent questions or concerns about the InstaDl.app downloader. If you can't find the answer to your question, feel free to ask through email on our contact page.",
+      intro: `This FAQ gives answers to common questions or issues people have about the InstaDl.app downloader. If you don't find the answer you're looking for, you can send us an email through our contact page.`,
       image: Images.Download,
       items: carouselFaq,
     },
@@ -96,17 +88,14 @@ export const categoryContent = {
     about: {
       image: Images.Download,
       title: "Download Instagram IGTV Videos",
-      description:
-        "Discover a seamless, speedy, and efficient way to download Instagram videos using our IGTV Video Downloader. As you browse through Instagram, you might stumble upon an IGTV video that catches your eye. Now, saving it to your device is as simple as a breeze. Just copy the video URL, paste it into the designated field on the InstaDl page, and hit the Download button. Voila! Your video is ready for offline viewing.",
+      description: `Discover an easy, fast, and efficient method to download Instagram videos with our IGTV Video Downloader. While scrolling through Instagram, you may come across an IGTV video that you like. Saving it to your device is really simple. Just copy the video's URL, paste it into the special box on the InstaDl website, and click the Download button. And there you go—your video is ready to watch offline.`,
       heading: "How to download IGTV Instagram?",
-      smallDescription:
-        "To download IGTV video follow a few easy steps, described below.",
+      smallDescription: `To download an IGTV video, just follow these simple steps as explained below.`,
       steps: igtvSteps,
     },
     downloadDescription: {
       heading: "Download IGTV Videos",
-      headingDescription:
-        "Instagram is a social media platform that allows users to post stories and share them with their followers. You can also create stories and highlights similar to Snapchat stories. Our website allows you to download Instagram story with one click!",
+      headingDescription: `Instagram is a social media app where people can share short updates called stories with their friends. You can make stories and even save them in special sections like Snapchat. Our website lets you download Instagram stories with just one click!`,
       image: Images.videoImg2,
       title: "IGTV Downloader",
       description:
@@ -115,8 +104,7 @@ export const categoryContent = {
     },
     faq: {
       title: "Frequently asked questions (FAQ)",
-      intro:
-        "This FAQ provides information on frequent questions or concerns about the InstaDl.app IGTV downloader. If you can't find the answer to your question, feel free to ask through email on our contact page.",
+      intro: `This FAQ answers common questions or worries people have about the InstaDl.app IGTV downloader. If you don't find the information you're looking for, you can reach out to us by email using the contact page.`,
       image: Images.Download,
       items: igtvFaq,
     },
@@ -127,25 +115,21 @@ export const categoryContent = {
     about: {
       image: Images.Download,
       title: "Download Instagram Photos",
-      description:
-        "In today's digital age, Instagram has become a hub for sharing life's moments through photographs, covering a wide range of interests. Sometimes you want to save a photo on your device. This is where InstaDl comes in, making it easy to download and save any photo you like from Instagram. Whether you're using a PC, Mac, Android, or iPhone, downloading your favorite Instagram photos is just a click away.",
+      description: `In today's digital world, Instagram has become a popular place to share the moments of your life through pictures, covering many different topics. If you ever want to save a photo on your phone or computer, InstaDl is a helpful tool that makes it simple to download and keep any photo you like from Instagram. You can use it whether you're on a PC, Mac, Android, or iPhone, and downloading your favorite Instagram pictures is just a few clicks away.`,
       heading: "How to download Instagram photos?",
-      smallDescription:
-        "See below the three easy steps to use this Instagram picture downloader. It saves time and energy.",
+      smallDescription: `Check the steps below to easily use this Instagram picture downloader. It helps save you time and effort.`,
       steps: photoSteps,
     },
     downloadDescription: {
       heading: "InstaDl Downloader",
       image: Images.DownloadTwo,
       title: "Photos Downloader",
-      description:
-        "Downloading multiple Instagram photos on whatever device you use, such as a smartphone or PC, is now made possible with the InstaDl downloader. It is an online tool provided for free and without a subscription. Just copy the post link where the photo is and paste it onto the appropriate field. Please note that multiple photo downloading is also possible with our InstaDl photo downloader. There is no limit on the number of photos you want to download.",
+      description: `You can now download several Instagram photos from any device you use, like a smartphone or computer, using the InstaDl downloader. This is a free online tool that doesn't require a subscription. Simply copy the link from the post where the photo is located and paste it into the correct field. Also, keep in mind that you can download more than one photo at a time with the InstaDl photo downloader. There's no set limit on how many photos you can download.`,
       link: "/photo",
     },
     faq: {
       title: "Frequently asked questions (FAQ)",
-      intro:
-        "This FAQ provides information on frequent questions or concerns about the InstaDl.app instagram photo downloader. If you can't find the answer to your question, feel free to ask through email on our contact page.",
+      intro: `This FAQ gives answers to common questions or worries people have about the InstaDl.app Instagram photo downloader. If you don't find the information you're looking for, you can send us an email through our contact page.`,
       image: Images.Download,
       items: photoFaq,
     },
@@ -156,8 +140,7 @@ export const categoryContent = {
     about: {
       image: Images.Download,
       title: "Download Instagram Reels Videos",
-      description:
-        "Reels Downloader, powered by InstaDl, is a user-friendly tool for downloading Instagram Reels videos. Effortlessly save Reels in mp4 format to your device. To download, just copy the Reel's link from Instagram, then paste it on InstaDl.app. This efficient service streamlines downloading Instagram Reels with just a few clicks.",
+      description: `Reels Downloader, which uses InstaDl, is an easy-to-use tool for downloading Instagram Reels videos. You can easily save Reels in mp4 format to your device. To get started, copy the Reel's link from Instagram and then paste it into InstaDl.app. This handy service makes it simple to download Instagram Reels with just a few clicks.`,
       heading: "How to download Instagram Reels?",
       smallDescription:
         "Check out the three simple steps to utilize this Instagram Reels downloader. It's designed to save both time and effort.",
@@ -167,14 +150,12 @@ export const categoryContent = {
       heading: "InstaDl Reels Downloader",
       image: Images.videoImg1,
       title: "Instagram Reels Download",
-      description:
-        "Instagram Reels, a novel addition to the Instagram social platform, enables the crafting of brief 15 and 30-second videos. Leveraging Instagram's superior editing capabilities, it empowers users to create and personalize videos in their distinctive style. Yet, direct downloading of Reels videos from Instagram is not permitted by the platform. For downloading Reels videos, InstaDl offers a straightforward solution. This tool facilitates the downloading of any Reels video across various devices including PCs, tablets, and smartphones (iPhone, Android).",
+      description: `Instagram Reels is a new feature on Instagram that lets people make short videos, either 15 or 30 seconds long. With Instagram's strong editing tools, users can create and customize videos in their own unique way. However, Instagram does not allow people to directly download Reels videos. To easily download Reels videos, InstaDl is a simple tool that works well. It lets users download any Reels video on different devices like computers, tablets, and phones, including iPhones and Android devices.`,
       link: "/reels",
     },
     faq: {
       title: "Frequently asked questions (FAQ)",
-      intro:
-        "This FAQ provides information on frequent questions or concerns about the InstaDl.app instagram Reels downloader. If you can't find the answer to your question, feel free to ask through email on our contact page.",
+      intro: `This FAQ gives answers to common questions or issues people have about the InstaDl.app Instagram Reels downloader. If you don't find the answer you're looking for, you can send us an email through our contact page.`,
       image: Images.Download,
       items: reelsFaq,
     },
@@ -185,8 +166,7 @@ export const categoryContent = {
     about: {
       image: Images.Download,
       title: "Instagram Story saver",
-      description:
-        "Instagram Story Saver by InstaDl is your go-to tool for effortlessly downloading any Instagram story straight to your device while remaining completely anonymous. Whether you wish to re-upload, repost, or simply save your favorite stories to your own media library for later viewing with friends, InstaDl makes it a breeze. With no limitations, you can keep the memories alive and share the laughter once more! InstaDl's Insta Story Saver is designed for both casual browsers and avid Instagram users, ensuring a seamless experience in preserving the fleeting moments shared on Instagram stories. Plus, our tool is accessible right from your browser - no need for any additional software installation! Embrace the ease and efficiency of InstaDl Instagram Story Saver and never miss out on any story that catches your eye.",
+      description: `Instagram Story Saver by InstaDl is the perfect tool for easily downloading any Instagram story directly to your device, all while staying completely private. Whether you want to re-upload, share again, or just save your favorite stories to your personal media collection for viewing with friends later, InstaDl makes it simple. There are no limits, so you can keep those memories safe and share the fun again and again. InstaDl's Story Saver is great for people who just browse Instagram and those who use it a lot, helping you save those quick, special moments shared in stories. Plus, you can use our tool right from your web browser—no need to download any extra apps! Enjoy the convenience and speed of InstaDl's Instagram Story Saver and never miss out on a story that grabs your attention.`,
       heading: "How to download Story Instagram?",
       smallDescription:
         "Only three easy and quickest steps to download an Instagram Story",
@@ -194,23 +174,19 @@ export const categoryContent = {
     },
     downloadDescription: {
       heading: "Instagram Story Download",
-      headingDescription:
-        "Instagram is a social media platform that allows users to post stories and share them with their followers. You can also create stories and highlights similar to Snapchat stories. Our website allows you to download Instagram story with one click!",
+      headingDescription: `Instagram is a social media app where people can share stories and post them for their followers to see. You can make stories and highlights just like on Snapchat. Our website lets you download Instagram stories with just one click!`,
       image: Images.videoImg2,
       title: "Story Saver",
-      description:
-        "Please note that to save a Story from Instagram, you must be confident that it is viewable to the public. Follow this rule to be able to download stories or highlights from your accounts. You always have to follow the rules!",
+      description: `Remember, if you want to save a Story from Instagram, make sure it's set to public so everyone can see it. Follow this rule so you can download stories or highlights from your own accounts. Always follow the rules.`,
       link: "/story",
       secondImage: Images.videoImg1,
       secondTitle: "Story Downloader",
-      secondDescription:
-        "Also, you can download the Story online by simply typing the Instagram Story link you like. This Instagram Story saver is free of charge; there is no need to get an account to become a member. It is anonymous.",
+      secondDescription: `Also, you can download the Story online by just entering the Instagram Story link you want. This Instagram Story saver is free to use, and you don't need to create an account to use it. It's completely anonymous.`,
       secondLink: "/story",
     },
     faq: {
       title: "Frequently asked questions (FAQ)",
-      intro:
-        "This FAQ provides information on frequent questions or concerns about the InstaDl.app instagram story downloader. If you can't find the answer to your question, feel free to ask through email on our contact page.",
+      intro: `This FAQ answers common questions or issues people have about the InstaDl.app Instagram story downloader. If you don't find the information you're looking for, you can send us an email through the contact page.`,
       image: Images.Download,
       items: storyFaq,
     },
@@ -230,20 +206,17 @@ export const categoryContent = {
     },
     downloadDescription: {
       heading: "InstaDl Story Viewer",
-      headingDescription:
-        "An Instagram viewer is a third-party website or app that allows you to view Instagram posts, stories, and profiles anonymously without having an Instagram account or logging into one.",
+      headingDescription: `An Instagram viewer is a website or app that lets you check Instagram posts, stories, and profiles without needing an account or logging in.`,
       image: Images.videoImg1,
       title: "Instagram Stories Viewer",
-      description:
-        "Currently, Instagram users do not have the option to download or save stories, highlights, or reels from Instagram directly. However, thanks to the Instagram Stories viewer, users now have this option. Additionally, the InstaDl Instagram Highlights viewer allows you to anonymously view public user stories regardless of the device you are using.",
+      description: `Right now, Instagram users can't download or save stories, highlights, or reels directly from the app. But there's a tool called the Instagram Stories viewer that let's users do this. Also, there's the InstaDl Instagram Highlights viewer, which lets you check public user stories without being logged in, and it works on any device.`,
       link: "/viewer",
     },
     faq: {
       title: "Frequently asked questions (FAQ)",
-      intro:
-        "This FAQ provides information on frequent questions or concerns about the InstaDl.app instagram viewer. If you can't find the answer to your question, feel free to ask through email on our contact page.",
+      intro: `This FAQ answers common questions or worries people have about the InstaDl.app Instagram viewer. If you don't find the information you're looking for, you can send us an email through our contact page.`,
       image: Images.Download,
       items: viewFaq,
     },
-  }
+  },
 };

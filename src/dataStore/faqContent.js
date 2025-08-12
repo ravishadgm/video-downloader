@@ -131,27 +131,27 @@ export const videoSteps = [
 
 export const photoFaq = [
   {
-    question: "Is it possible to download Instagram pictures to my PC?",
+    question: "Can I download Instagram photos to my computer?",
     answer:
-      "Of course, by all means. As an online service, InstaDl works directly in your browser. Using this Instagram downloader for your PC will not be a problem. Our photo downloader service is also available for tablets, Macs, and phones. Our photo downloading service is also available for tablets or phones.",
+    `Of course, go ahead. InstaDl is an online service that works directly in your browser. Using this Instagram downloader on your PC is not a problem. Our photo downloader service is also available for tablets, Macs, and phones. Our photo downloading service is also available for tablets or phones.`
   },
   {
-    question: "What type of file formats does InstaDl support for downloading?",
+    question: "What file formats can I download using InstaDl?",
     answer:
-      "The most convenient these days is the JPG file format for downloading images. As for the videos, the MP4 file format is still considered the most popular worldwide, ensuring high quality and a small video file size.",
+    "These days, JPG is the easiest format to use when downloading images. For videos, MP4 remains the most widely used format around the world because it provides good quality while keeping the file size small."
   },
   {
     question: "Is this Instagram photo downloader a free service?",
     answer:
-      "Yes! Our Instagram picture downloader is completely FREE. No need for registration of an account or other types of paid service charging.",
+      `Yes! Our Instagram picture downloader is totally free to use. You don't need to create an account or pay for any premium services.`
   },
   {
     question: "Which other devices are compatible with the InstaDl downloader?",
-    answer: `InstaDl operates as a web-based service. There's no need for concern when using the InstaDl picture downloader on devices like iPads, iPhones, or Android phones. Every other device, including PCs, are fully compatible with this photo downloader. All you need is a web browser, and you're set!`,
+    answer:`InstaDl works as an online service. You don't have to worry about using the InstaDl picture downloader on devices like iPads, iPhones, or Android phones. It also works perfectly on other devices like PCs. All you need is a web browser, and you're ready to go!`,
   },
   {
-    question: "How safe is to download Instagram photos with InstaDl?",
-    answer: `It is safe! No fear to download Instagram photos with InstaDl. Our safety policy says not to collect users' data using this tool. We care about your trust in us!`,
+    question:"How safe is it to download Instagram photos using InstaDl?",
+    answer: "It's safe! You can download Instagram photos with InstaDl without any worry. Our safety policy ensures that we don't collect any of your personal data through this tool. We really value your trust in us!",
   },
 ];
 
@@ -165,13 +165,13 @@ export const photoSteps = [
   {
     image: Images.step2,
     title: "Paste the link",
-    text: "Paste the link to the input line on the Instagram image downloader page. Remember to have the InstaDl web page already opened.",
+    text: `Put the link from the Instagram image you want to download into the input line on the InstaDl website. Make sure the InstaDl web page is already open.`,
     link: "/photo"
   },
   {
     image: Images.step3,
     title: "Download",
-    text: `Click the Download button to save the photo(s) to your device. Download what fits your needs.`,
+    text: `Click the Download button to save the photo(s) on your device. Download the ones that suit your needs.`,
     link: "/photo"
   },
 ];
@@ -180,26 +180,26 @@ export const reelsFaq = [
   {
     question: "Is it possible to download Instagram Reels to my PC?",
     answer:
-      "Absolutely, without a doubt. InstaDl operates as an online service, functioning seamlessly in your browser. Utilizing this Instagram Reels downloader on your PC poses no issue. Additionally, our Reels downloader is accessible for tablets, Macs, and phones. Similarly, our photo downloading service is readily available for use on tablets and phones.",
+    `Yes, definitely. InstaDl is an online service that works smoothly in your browser. You can use this Instagram Reels downloader on your PC without any problems. Our Reels downloader also works on tablets, Macs, and phones. Likewise, our photo downloading service is available for use on tablets and phones as well.`
   },
   {
-    question: "What type of file formats does InstaDl support for downloading?",
+    question: "What kinds of file formats can I download using InstaDl?",
     answer:
-      "The most convenient these days is the JPG file format for downloading images. As for the videos, the MP4 file format is still considered the most popular worldwide, ensuring high quality and a small video file size.",
+    `These days, the JPG format is the easiest choice for downloading images. For videos, MP4 is still the most widely used format around the world because it offers good quality and keeps the file size small.`
   },
   {
     question: "Is this Instagram Reels downloader a free service?",
     answer:
-      "Yes! Our Instagram Reels downloader is completely FREE. No need for registration of an account or other types of paid service charging.",
+      `Yes! Our Instagram Reels downloader is totally free to use. You don’t need to create an account or pay for any extra services.`
   },
   {
     question:
       "Which additional devices can work with the InstaDl Reels downloader?",
-    answer: `InstaDl is a versatile web service. Whether you're on an iPad, iPhone, Android, or any other device, you can confidently use the InstaDl Reels downloader without any issues. This service is fully compatible with PCs and all other devices. All you need is a web browser, and you're good to go!`,
+    answer: `InstaDl is a flexible web service that works well on any device, like an iPad, iPhone, Android phone, or something else. You can use the InstaDl Reels downloader easily without any problems. It works smoothly on computers and all kinds of devices. All you need is a web browser, and you're all set to start.`
   },
   {
-    question: "How safe is to download Instagram Reels with InstaDl?",
-    answer: `It is safe! No fear to download Instagram Reels with InstaDl. Our safety policy says not to collect users' data using this tool. We care about your trust in us!`,
+    question:`How safe is it to download Instagram Reels using InstaDl?`,
+    answer: `It's safe! You can download Instagram Reels with InstaDl without any worries. Our safety policy ensures we don't collect any of your personal data through this tool. We really value your trust in us!`
   },
 ];
 export const reelsSteps = [
@@ -212,7 +212,7 @@ export const reelsSteps = [
   {
     image: Images.step2,
     title: "Paste the link",
-    text: "Paste the link to the input line on the Instagram Reels downloader page. Remember to have the InstaDl web page already opened.",
+    text:`Paste the link from the Instagram Reels downloader page into the input line. Make sure the InstaDl website is already open.`,
     link: "/reels"
   },
   {
@@ -227,7 +227,7 @@ export const storyFaq = [
   {
     question: "What are Instagram Stories and Highlights?",
     answer:
-      "Stories and Highlights are two features that allow users to share photos and videos that disappear after 24 hours. The only difference between the two types is that Highlights are saved in a private album called Highlights. At the same time, regular stories go into a public gallery called Your Story.",
+    "Stories and Highlights are two features that let users share photos and videos which disappear after 24 hours. The main difference is that Highlights are kept in a private album named Highlights, while regular stories are added to a public gallery called Your Story."
   },
   {
     question: "How to download Instagram stories?",
@@ -241,11 +241,11 @@ export const storyFaq = [
   },
   {
     question: "How many times can I save Instagram stories?",
-    answer: `There are no restrictions on how many times you can save stories. You can use our Instagram story download service as often as possible. And it is free. You can download an Instagram story and use it in any way that suits you, whether to help you remember the story or share it with friends. You could even print out your Instagram story (image) and hang it on your wall! It's up to you!`,
+    answer: `There are no limits on how many times you can save stories. You can use our Instagram story download service as much as you want. And the best part is, it's completely free. You can download an Instagram story and use it however you like — whether to keep it for yourself, share it with friends, or even print it out and put it on your wall. It's all up to you!`
   },
   {
     question:
-      "Is it possible to download Instagram stories on an Android or iPhone device?",
+     "Can I download Instagram stories from my Android or iPhone?",
     answer: `Yes, various methods are available for anonymously downloading Instagram stories on Android. One of the easiest and most convenient ways is through our website. This Instagram story downloader is entirely free and unrestricted, compatible with major browsers like Google Chrome, Firefox, Safari, and Opera. You can effortlessly download any stories or highlights, allowing you to view them anonymously on your device at any time.`,
   },
 ];
