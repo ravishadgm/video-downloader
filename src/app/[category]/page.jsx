@@ -31,9 +31,11 @@ export default function CategoryPage({ params }) {
         image={content.downloadDescription.image}
         title={content.downloadDescription.title}
         description={content.downloadDescription.description}
+        link={content.downloadDescription.link}
         secondImage={content.downloadDescription.secondImage}
         secondTitle={content.downloadDescription.secondTitle}
         secondDescription={content.downloadDescription.secondDescription}
+        secondLink={content.downloadDescription.secondLink}
       />
 
       <AppPromotion />

@@ -38,10 +38,12 @@ export const categoryContent = {
       title: "Save videos",
       description:
         "Please note that once you download the video from Instagram you are required to make it available for everyone to see it. In case you are not respecting this rule you will be restricted to download videos from private accounts. Rules are always to be respected!",
+      link: "/video",
       secondImage: Images.videoImg4,
       secondTitle: "Video Downloader",
       secondDescription:
         "Furthermore, what you should know is that the downloading of the videos can be done online by just typing the Instagram video link you like. This Instagram video Downloader provides its services absolutely free of any charge; no need to get an account as to become a member.",
+      secondLink: "/video",
     },
     faq: {
       title: "Frequently asked questions (FAQ)",
@@ -73,10 +75,12 @@ export const categoryContent = {
       title: "Album Downloader",
       description:
         "It has always been challenging to download an Instagram carousel post. You must paste the link of the Instagram carousel post without searching the source code or photo link. It is 100% safe and secure, as all photos AND videos are downloaded from the Instagram server.",
+      link: "/carousel",
       secondImage: Images.DownloadTwo,
       secondTitle: "Download multiple photos",
       secondDescription:
         "The online Instagram multiple photos downloading tool will help anyone who wants free photo downloading. Even the largest pictures can now be saved in high quality and originality. The HD images and videos from IG are available by using this Instagram downloader.",
+      secondLink: "/carousel",
     },
     faq: {
       title: "Frequently asked questions (FAQ)",
@@ -107,6 +111,7 @@ export const categoryContent = {
       title: "IGTV Downloader",
       description:
         "After clicking the Download button, you want to check if the video has been downloaded. So, no matter what device you use, a smartphone, a tablet, a Mac, or a PC, the IGTV video will be downloaded in the default Download folder. There should be no compatibility problems.",
+      link: "/igtv",
     },
     faq: {
       title: "Frequently asked questions (FAQ)",
@@ -135,6 +140,7 @@ export const categoryContent = {
       title: "Photos Downloader",
       description:
         "Downloading multiple Instagram photos on whatever device you use, such as a smartphone or PC, is now made possible with the InstaDl downloader. It is an online tool provided for free and without a subscription. Just copy the post link where the photo is and paste it onto the appropriate field. Please note that multiple photo downloading is also possible with our InstaDl photo downloader. There is no limit on the number of photos you want to download.",
+      link: "/photo",
     },
     faq: {
       title: "Frequently asked questions (FAQ)",
@@ -163,6 +169,7 @@ export const categoryContent = {
       title: "Instagram Reels Download",
       description:
         "Instagram Reels, a novel addition to the Instagram social platform, enables the crafting of brief 15 and 30-second videos. Leveraging Instagram's superior editing capabilities, it empowers users to create and personalize videos in their distinctive style. Yet, direct downloading of Reels videos from Instagram is not permitted by the platform. For downloading Reels videos, InstaDl offers a straightforward solution. This tool facilitates the downloading of any Reels video across various devices including PCs, tablets, and smartphones (iPhone, Android).",
+      link: "/reels",
     },
     faq: {
       title: "Frequently asked questions (FAQ)",
@@ -193,10 +200,12 @@ export const categoryContent = {
       title: "Story Saver",
       description:
         "Please note that to save a Story from Instagram, you must be confident that it is viewable to the public. Follow this rule to be able to download stories or highlights from your accounts. You always have to follow the rules!",
+      link: "/story",
       secondImage: Images.videoImg1,
       secondTitle: "Story Downloader",
       secondDescription:
         "Also, you can download the Story online by simply typing the Instagram Story link you like. This Instagram Story saver is free of charge; there is no need to get an account to become a member. It is anonymous.",
+      secondLink: "/story",
     },
     faq: {
       title: "Frequently asked questions (FAQ)",
@@ -227,6 +236,7 @@ export const categoryContent = {
       title: "Instagram Stories Viewer",
       description:
         "Currently, Instagram users do not have the option to download or save stories, highlights, or reels from Instagram directly. However, thanks to the Instagram Stories viewer, users now have this option. Additionally, the InstaDl Instagram Highlights viewer allows you to anonymously view public user stories regardless of the device you are using.",
+      link: "/viewer",
     },
     faq: {
       title: "Frequently asked questions (FAQ)",
@@ -236,5 +246,4 @@ export const categoryContent = {
       items: viewFaq,
     },
   }
-
 };

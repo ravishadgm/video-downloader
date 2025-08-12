@@ -65,16 +65,19 @@ export const steps = [
     image: Images.step1,
     title: "Copy the URL",
     text: "Open the Instagram application or website, copy the URL of the photo, video, reels, carousel, IGTV.",
+    link: "/"
   },
   {
     image: Images.step2,
     title: "Paste the link",
     text: "Return to the InstaDl website, paste the link into the input field and click the “Download” button.",
+    link: "/"
   },
   {
     image: Images.step3,
     title: "Download",
     text: `Quickly you will get the results with several quality options. Download what fits your needs.`,
+    link: "/"
   },
 ];
 
@@ -110,16 +113,19 @@ export const videoSteps = [
     image: Images.step1,
     title: "Copy the URL",
     text: "If you are navigating on Instagram or you prefer the Instagram app, and just found a post you really like, then what you should do is just click on (⋯) for iPhone or (⋮) for Android. Next, from the popup menu choose the “Copy Link” option to copy the link.",
+    link: "/video"
   },
   {
     image: Images.step2,
     title: "Paste the link",
     text: "Once you copied the link, the next step you should follow is to paste it onto the appropriate field, then press the Download button.",
+    link: "/video"
   },
   {
     image: Images.step3,
     title: "Download",
     text: `By pressing the Download button you are downloading the video and this video file will be saved to the Downloads' folder if you have an iPhone or to the downloads' gallery in case you have an Android.`,
+    link: "/video"
   },
 ];
 
@@ -148,21 +154,25 @@ export const photoFaq = [
     answer: `It is safe! No fear to download Instagram photos with InstaDl. Our safety policy says not to collect users' data using this tool. We care about your trust in us!`,
   },
 ];
+
 export const photoSteps = [
   {
     image: Images.step1,
     title: "Copy the URL",
     text: "Open a post on where there is your favorite Instagram picture and copy the link.",
+    link: "/photo"
   },
   {
     image: Images.step2,
     title: "Paste the link",
     text: "Paste the link to the input line on the Instagram image downloader page. Remember to have the InstaDl web page already opened.",
+    link: "/photo"
   },
   {
     image: Images.step3,
     title: "Download",
     text: `Click the Download button to save the photo(s) to your device. Download what fits your needs.`,
+    link: "/photo"
   },
 ];
 
@@ -197,16 +207,19 @@ export const reelsSteps = [
     image: Images.step1,
     title: "Copy the URL",
     text: "Open Instagram site or app. Open the page with Reels and copy the URL of the page.",
+    link: "/reels"
   },
   {
     image: Images.step2,
     title: "Paste the link",
     text: "Paste the link to the input line on the Instagram Reels downloader page. Remember to have the InstaDl web page already opened.",
+    link: "/reels"
   },
   {
     image: Images.step3,
     title: "Download",
     text: `Click the Download button to save the Reels to your device.`,
+    link: "/reels"
   },
 ];
 
@@ -241,16 +254,19 @@ export const storySteps = [
     image: Images.step1,
     title: "Copy the URL",
     text: "Open a Story you really like, then what you should do is just click on (⋯) for iPhone or (⋮) for Android. Next, from the popup menu choose the “Copy Link” option to copy the link.",
+    link: "/story"
   },
   {
     image: Images.step2,
     title: "Paste the link",
     text: "Once you copied the Story link, the next step you should follow is to paste it onto the appropriate field, then hit the Download button",
+    link: "/story"
   },
   {
     image: Images.step3,
     title: "Download",
     text: `By pressing the Download button, you are downloading the Story. This Story file will be saved to the Downloads folder if you have an iPhone or to the downloads gallery in case you have an Android`,
+    link: "/story"
   },
 ];
 
@@ -284,16 +300,19 @@ export const igtvSteps = [
     image: Images.step1,
     title: "Copy the URL",
     text: "Open a post on where there is your favorite Instagram profile and copy the link.",
+    link: "/igtv"
   },
   {
     image: Images.step2,
     title: "Paste the link",
     text: "Return to the InstaDl website, paste the link into the input field and click the “Download” button.",
+    link: "/igtv"
   },
   {
     image: Images.step3,
     title: "View and Download",
     text: `Click the Download button to save the photo(s) to your device. Download what fits your needs.`,
+    link: "/igtv"
   },
 ];
 
@@ -333,16 +352,19 @@ export const carouselSteps = [
     image: Images.step1,
     title: "Copy the URL",
     text: "Open a post on where there is your favorite Instagram profile and copy the link.",
+    link: "/carousel"
   },
   {
     image: Images.step2,
     title: "Paste the link",
     text: "Return to the InstaDl website, paste the link into the input field and click the “Download” button.",
+    link: "/carousel"
   },
   {
     image: Images.step3,
     title: "View and Download",
     text: `Click the Download button to save the Carousel to your device. Download what fits your needs.`,
+    link: "/carousel"
   },
 ];
 
@@ -374,16 +396,19 @@ export const viewSteps = [
     image: Images.step1,
     title: "Copy the URL",
     text: "Open a post on where there is your favorite Instagram profile and copy the link.",
+    link: "/viewer"
   },
   {
     image: Images.step2,
     title: "Paste the link",
     text: "Paste the link to the input line on the Instagram Story Viewer page. Remember to have the InstaDl web page already opened.",
+    link: "/viewer"
   },
   {
     image: Images.step3,
     title: "View and Download",
     text: `Click the Download button to save the stories to your device.`,
+    link: "/viewer"
   },
 ];
 

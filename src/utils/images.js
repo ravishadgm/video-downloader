@@ -1,6 +1,6 @@
 const images = {
     Logo: "/images/Header/Final_Logo.png",
-    Download: "/images/about/Download.webp",
+    Download: "/images/about/Downloader.png",
     step1: "/images/about/Step1.webp",
     step2: "/images/about/Step2.webp",
     step3: "/images/about/Step3.webp",

@@ -38,7 +38,7 @@ export default function AboutProcess({
         <div className={styles.grid}>
           {steps.map((step, index) => (
             <div className={styles.card} key={index}>
-              <Link href="/">
+              <Link href={step.link}>
                 <div className={styles.imageWrapper}>
                   <Image
                     src={step.image}
