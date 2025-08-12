@@ -7,7 +7,6 @@ import { FaHeart, FaEye, FaPaperPlane } from "react-icons/fa";
 import styles from "./ReelPreview.module.scss";
 
 export default function ReelPreview({ data, onShare }) {
-
   const [isPlaying, setIsPlaying] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const videoRef = useRef(null);
@@ -91,15 +90,15 @@ export default function ReelPreview({ data, onShare }) {
       <div className={styles.shareDownload}>
         <button
           className={styles.innerBtn}
-          onClick={() => handleShare(data?.mediaUrls[0])}
-        >
-          Share
-        </button>
-        <button
-          className={styles.innerBtn}
           onClick={() => handleDownload(data?.mediaUrls[0], 0)}
         >
           Download
+        </button>
+        <button
+          className={styles.innerBtn}
+          onClick={() => handleShare(data?.mediaUrls[0])}
+        >
+          Share
         </button>
       </div>
     </div>

@@ -2,6 +2,17 @@ import React from "react";
 import styles from "./styles.module.scss";
 import legalPagesData from "@/dataStore/legalPagesContent";
 
+export function generateMetadata({ params }) {
+  const pageData = legalPagesData[params.slug];
+  return {
+    title: pageData
+      ? `${pageData.title} - InstaDL`
+      : "Page Not Found - InstaDL",
+    description:
+      pageData?.description || "The page you are looking for does not exist.",
+  };
+}
+
 export default function Page({ params }) {
   const { slug } = params;
   const pageData = legalPagesData[slug];

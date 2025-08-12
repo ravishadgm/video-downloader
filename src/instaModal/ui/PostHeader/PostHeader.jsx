@@ -1,24 +1,28 @@
-// components/common/PostHeader.jsx
 "use client";
 
 import Image from "next/image";
-import styles from "./PostHeader.module.scss"; // create this SCSS file for styles if needed
+import styles from "./PostHeader.module.scss";
 
-export default function PostHeader({ avatar, username }) {
+export default function PostHeader({ thumbnail, username }) {
   if (!username) return null;
+  console.log(thumbnail, "logo--------");
+
+  const initials = username.slice(0, 2).toUpperCase();
 
   return (
     <div className={styles.header}>
-      {avatar && (
+      {thumbnail ? (
         <Image
-          src={avatar}
+          src={thumbnail}
           alt={username}
-          width={40}
-          height={40}
+          width={30}
+          height={30}
           className={styles.avatar}
         />
+      ) : (
+        <div className={styles.initials}>{initials}</div>
       )}
-      <span className={styles.username}>@{username}</span>
+      <span className={styles.username}>{username}</span>
     </div>
   );
 }

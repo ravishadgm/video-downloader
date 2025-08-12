@@ -1,5 +1,5 @@
 import Logo from "./Header/Final_Logo.png";
-import Download from "./about/Download.webp";
+import Download from "./about/Logo.png";
 import step1 from "./about/Step1.webp";
 import step2 from "./about/Step2.webp";
 import step3 from "./about/Step3.webp";
