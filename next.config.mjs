@@ -1,10 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  compress: true, // Enable response compression for HTML/JS/CSS
+
   sassOptions: {
     additionalData: `
       @use "src/styles/variables" as *;
     `,
   },
+
   images: {
     remotePatterns: [
       {
@@ -17,9 +20,10 @@ const nextConfig = {
       },
     ],
   },
+
   experimental: {
     turbo: false,
-    appDir: true, 
+    appDir: true,
   },
 };
 
