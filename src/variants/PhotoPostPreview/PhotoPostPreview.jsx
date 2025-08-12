@@ -14,7 +14,7 @@ import styles from "./PhotoPostPreview.module.scss";
 
 export default function PhotoPostPreview({ data }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  console.log(data, "data");
+
   return (
     <>
       <div className={styles.post}>

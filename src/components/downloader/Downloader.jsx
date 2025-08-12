@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import MediaPreview from "@/components/mediaPreview/MediaPreview";
 import styles from "./style.module.scss";
@@ -16,6 +16,26 @@ export default function Downloader({
   const [mediaData, setMediaData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [pageMeta, setPageMeta] = useState({
+    title,
+    description: subtitle,
+  });
+
+useEffect(() => {
+  if (pageMeta.title) {
+    document.title = pageMeta.title;
+  }
+  if (pageMeta.description) {
+    let metaDescriptionTag = document.querySelector('meta[name="description"]');
+    if (!metaDescriptionTag) {
+      metaDescriptionTag = document.createElement('meta');
+      metaDescriptionTag.setAttribute('name', 'description');
+      document.head.appendChild(metaDescriptionTag);
+    }
+    metaDescriptionTag.setAttribute('content', pageMeta.description);
+  }
+}, [pageMeta]);
+
 
   const handleDownload = async (e) => {
     e.preventDefault();
@@ -56,15 +76,30 @@ export default function Downloader({
     <>
       <div className={styles.wrapper}>
         <nav className={styles.category}>
-          {mainNavLinks?.map(({ label, icon, href }, idx) => (
-            <div className={styles.category_element} key={idx}>
-              <Link href={href}>
-                {icon}
-                <span>{label}</span>
-              </Link>
-            </div>
-          ))}
+          {mainNavLinks?.map(
+            (
+              { label, icon, href, metaTitle, metaDescription },
+              idx
+            ) => (
+              <div className={styles.category_element} key={idx}>
+                <Link
+                  href={href}
+                  onClick={() =>
+                    setPageMeta({
+                      title: metaTitle || label,
+                      description: metaDescription || "",
+                    })
+                  }
+                >
+                  {icon}
+                  <span>{label}</span>
+                </Link>
+              </div>
+            )
+          )}
         </nav>
+
+    
 
         <h1 className={styles.title}>{title}</h1>
         <p className={styles.subtitle}>{subtitle}</p>
@@ -119,6 +154,7 @@ export default function Downloader({
 
         {error && <div className={styles.error}>{error}</div>}
       </div>
+
       {loading ? (
         <div className={styles.loaderContainer}>
           <div className={styles.spinner} />

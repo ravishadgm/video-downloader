@@ -89,6 +89,10 @@ const legalPagesData = {
         heading: "6. Service Availability",
         text: "We strive to keep our service available 24/7, but we do not guarantee uninterrupted access. We reserve the right to modify or discontinue the service at any time.",
       },
+       {
+      heading: "7. Content Ownership",
+      text: "All content accessed through InstaDl.app remains the property of its original owners. InstaDl.app does not claim ownership of any content posted on Instagram or downloaded through our service. Users are responsible for respecting copyright laws and Instagram's terms of service when using our platform.",
+    },
     ],
   },
 };

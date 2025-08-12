@@ -43,7 +43,6 @@ export async function POST(req) {
     else if (media?.is_carousel) type = "carousel";
     else if (type.includes("image")) type = "photo";
     else type = "viewer";
-
     return NextResponse.json({
       type,
       mediaUrl: first,

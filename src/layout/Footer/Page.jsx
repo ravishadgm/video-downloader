@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Images from "@/utils/images";
 import styles from "./Footer.module.scss";
-import { mainNavLinks, legalLinks, additionalLinks } from "@/dataStore/linksContent";
+import { mainNavLinks, legalLinks } from "@/dataStore/linksContent";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -49,9 +49,7 @@ export default function Footer() {
         </div>
 
         {/* Additional Services */}
-        <div className={styles.additionalLinks} aria-label="Additional services">
-          {renderLinks(additionalLinks)}
-        </div>
+      
       </div>
 
       {/* Copyright */}
