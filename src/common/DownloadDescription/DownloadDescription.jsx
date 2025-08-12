@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import Image from "next/image";
 import styles from "./styles.module.scss";
 
@@ -14,6 +15,8 @@ export default function DownloadDescription({
   secondImage,
   secondDescription,
   imageAlt = "Feature descriptive illustrate",
+  link,
+  secondLink,
 }) {
   const headingId = React.useId();
   const firstSectionId = React.useId();
@@ -49,17 +52,29 @@ export default function DownloadDescription({
             <h2 id={`${firstSectionId}-title`}>{title}</h2>
             <p>{description}</p>
           </div>
+
           <div
             className={styles.imageWrapper}
             role="img"
             aria-labelledby={`${firstSectionId}-title`}
           >
-            <Image
-              src={image}
-              alt={imageAlt}
-              fill
-              className={styles.imageDetail}
-            />
+            {link ? (
+              <Link href={link} className={styles.imageLink}>
+                <Image
+                  src={image}
+                  alt={imageAlt}
+                  fill
+                  className={styles.imageDetail}
+                />
+              </Link>
+            ) : (
+              <Image
+                src={image}
+                alt={imageAlt}
+                fill
+                className={styles.imageDetail}
+              />
+            )}
           </div>
         </div>
 
@@ -79,12 +94,23 @@ export default function DownloadDescription({
                   secondTitle ? `${secondSectionId}-title` : undefined
                 }
               >
-                <Image
-                  src={secondImage}
-                  alt={imageAlt}
-                  fill
-                  className={styles.secondImageDetail}
-                />
+                {secondLink ? (
+                  <Link href={secondLink} className={styles.imageLink}>
+                    <Image
+                      src={secondImage}
+                      alt={imageAlt}
+                      fill
+                      className={styles.secondImageDetail}
+                    />
+                  </Link>
+                ) : (
+                  <Image
+                    src={secondImage}
+                    alt={imageAlt}
+                    fill
+                    className={styles.secondImageDetail}
+                  />
+                )}
               </div>
             )}
             <div className={styles.description}>

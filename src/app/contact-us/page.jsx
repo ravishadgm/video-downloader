@@ -1,6 +1,11 @@
 import React from "react";
 import styles from "./styles.module.scss";
 
+export const metadata = {
+  title: "Contact - InstaDL",
+  description: "Get in touch with the InstaDL support team.",
+};
+
 export default function page() {
   const headingId = React.useId();
 

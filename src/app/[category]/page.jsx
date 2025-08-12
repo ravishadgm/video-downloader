@@ -10,8 +10,8 @@ import { categoryContent } from "@/dataStore/categoryContent";
 export default function CategoryPage({ params }) {
   const content = categoryContent[params.category];
 
-  if (!content) return notFound();
-
+  if (!content) return notFound(); // 404 if not found
+  console.log(content, "contentcontentcontent");
   return (
     <>
       <Downloader title={content.title} subtitle={content.subtitle} />
@@ -25,16 +25,16 @@ export default function CategoryPage({ params }) {
         steps={content.about.steps}
       />
 
-        <DownloadDescription
-          heading={content.downloadDescription.heading}
-          headingDescription={content.downloadDescription.headingDescription}
-          image={content.downloadDescription.image}
-          title={content.downloadDescription.title}
-          description={content.downloadDescription.description}
-          secondImage={content.downloadDescription.secondImage}
-          secondTitle={content.downloadDescription.secondTitle}
-          secondDescription={content.downloadDescription.secondDescription}
-        />
+      <DownloadDescription
+        heading={content.downloadDescription.heading}
+        headingDescription={content.downloadDescription.headingDescription}
+        image={content.downloadDescription.image}
+        title={content.downloadDescription.title}
+        description={content.downloadDescription.description}
+        secondImage={content.downloadDescription.secondImage}
+        secondTitle={content.downloadDescription.secondTitle}
+        secondDescription={content.downloadDescription.secondDescription}
+      />
 
       <AppPromotion />
 

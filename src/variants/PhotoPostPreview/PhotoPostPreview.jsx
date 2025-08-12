@@ -18,7 +18,7 @@ export default function PhotoPostPreview({ data }) {
   return (
     <>
       <div className={styles.post}>
-        <PostHeader avatar={data?.avatar} username={data?.username} />
+        <PostHeader avatar={data?.thumbnail} username={data?.username} />
 
         <MediaSwiper
           mediaUrls={data.mediaUrls}
