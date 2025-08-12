@@ -1,13 +1,18 @@
 .storyWrapper {
-  max-width: 330px;
-  height: 582.72px;
-  width: 327.78px;
+  height: 941.76px;
+  width: 529.74px;
   margin: 2rem auto;
-  border-radius: 16px;
+  border-radius: 8px;
   overflow: hidden;
   background: $black-color;
   position: relative;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+
+  @media(max-width:1440px){
+     max-width: 330px;
+    height: 582.72px;
+    width: 327.78px;
+  }
 }
 
 .storySwiper {
@@ -23,15 +28,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.storyMedia {
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-  object-fit: cover;
-  border-radius: 0;
-  background-color: $black-color;
 }
 
 .storyTopBar {
@@ -57,9 +53,14 @@
   gap: 8px;
 }
 
+.controlButtons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
 
-// Play/pause button styles
-.playPauseButton {
+
+.playPauseButton,.muteButton  {
   background-color: rgba(0, 0, 0, 0.6);
   color: $color-white;
   border: none;
@@ -71,8 +72,8 @@
   justify-content: center;
   font-size: 16px;
   transition: all 0.2s ease;
-  width: 36px;
-  height: 36px;
+  width: 28px;
+  height: 28px;
   z-index: 20;
 
   &:hover {
@@ -107,7 +108,6 @@
   text-align: center;
 }
 
-/* ---------------- PROGRESS BAR ---------------- */
 .progressRow {
   display: flex;
   gap: 4px;
@@ -150,53 +150,39 @@
   }
 }
 
-.swiper-pagination-bullet-active {
-  background-color: $color-white !important;
-  opacity: 1 !important;
-}
+.shareDownload {
+    gap: 10px;
+    display: flex;
+    width: 529.74px;
+    margin: 0 auto 30px;
 
-/* ---------------- NAV BUTTONS ---------------- */
-.navButton {
 
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.8);
-  border: none;
-  padding: 8px;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 10;
-  font-size: 20px;
-  color: $dark-gray;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
+     @media(max-width:1440px){
+        max-width: 330px;
+        width: 327.78px;
+     }
 
-  &:hover {
-    background: $light-gray;
-    transform: translateY(-50%) scale(1.1);
-  }
+     @media(max-width:480px){
+      margin-top:30px;
+     }
 
-  svg {
-    pointer-events: none;
+    .shareBtn {
+      width:48%;
+      background: $gradient-blue;
+      color: $color-white;
+
+      border-radius: 10px;
+      width: 50%;
+      padding: 8px 0;
+      font-size: 14px;
+      text-transform: capitalize;
   }
 }
 
-.prevButton {
-  left: 8px;
-}
-
-.nextButton {
-  right: 8px;
-}
-
-/* ---------------- RESPONSIVE ---------------- */
 @media (max-width: 600px) {
   .storyWrapper {
     max-width: 100vw;
-    width: 100vw; // Full width on mobile but not desktop
+    width: 100vw; 
     height: 100vh;
     margin: 0;
     border-radius: 0;
@@ -228,26 +214,9 @@
     height: 24px;
   }
 
-  .rightActions {
-    right: 16px;
-    gap: 12px;
-  }
-
-  .actionButton {
-    width: 44px;
-    height: 44px;
-    font-size: 16px;
-    padding: 10px;
-
-  }
-
-  .navButton {
-    padding: 6px;
-    font-size: 16px;
-  }
-
   .progressRow {
     padding: 12px 16px;
   }
 }
+
 

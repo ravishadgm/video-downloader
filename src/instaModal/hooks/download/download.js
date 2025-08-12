@@ -15,3 +15,5 @@ export const handleDownload = (url, index) => {
     document.body.removeChild(link);
   }, 100);
 };
+
+

@@ -1,21 +1,26 @@
 "use client";
+
 import { useRef, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
-import { FaChevronLeft, FaChevronRight, FaPlay, FaPause } from "@/icons/index";
+import { FaPlay, FaPause, FaVolumeUp, FaVolumeMute } from "@/icons/index";
+import MediaGallery from "@/instaModal/ui/MediaGallery/MediaGallery";
+import SwiperNavigation from "@/instaModal/ui/SwiperNavigation/SwiperNavigation";
+import { handleShareAll } from "@/instaModal/hooks/share/share";
+import { handleDownloadAll } from "@/instaModal/hooks/download/download";
 import styles from "./StoryPreview.module.scss";
 
 export default function StoryPreview({ stories = [] }) {
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
   const videoRef = useRef(null);
   const [swiperInstance, setSwiperInstance] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeDuration, setActiveDuration] = useState(4000);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [progressPaused, setProgressPaused] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
 
   const flattenedStories = stories.reduce((acc, story) => {
     acc.push(story);
@@ -25,20 +30,20 @@ export default function StoryPreview({ stories = [] }) {
     return acc;
   }, []);
 
-  // Initialize Swiper navigation
-  useEffect(() => {
-    if (swiperInstance && prevRef.current && nextRef.current) {
-      swiperInstance.params.navigation.prevEl = prevRef.current;
-      swiperInstance.params.navigation.nextEl = nextRef.current;
-      swiperInstance.navigation.init();
-      swiperInstance.navigation.update();
-    }
-  }, [swiperInstance]);
+  const mediaUrls = flattenedStories
+    .map((story) => {
+      const video = story.video_versions?.[0]?.url;
+      const image =
+        story.image_versions2?.candidates?.[0]?.url ||
+        story.display_resources?.[0]?.src ||
+        story.image_versions?.standard_resolution?.url;
+      return video || image;
+    })
+    .filter(Boolean);
 
   useEffect(() => {
     const activeStory = flattenedStories[currentIndex];
     const isVideo = activeStory?.video_versions?.[0]?.url;
-
     if (isVideo) {
       const video = document.createElement("video");
       video.src = activeStory.video_versions[0].url;
@@ -54,13 +59,14 @@ export default function StoryPreview({ stories = [] }) {
     }
   }, [currentIndex, flattenedStories]);
 
-  // Auto-slide timer
   useEffect(() => {
+    if (!isPlaying) return;
+
     const timer = setTimeout(() => {
       swiperInstance?.slideNext();
     }, activeDuration);
     return () => clearTimeout(timer);
-  }, [activeDuration, swiperInstance, currentIndex]);
+  }, [activeDuration, swiperInstance, currentIndex, isPlaying]);
 
   if (!flattenedStories.length) {
     return (
@@ -72,67 +78,83 @@ export default function StoryPreview({ stories = [] }) {
 
   const togglePlayPause = () => {
     if (!videoRef.current) return;
-
     if (isPlaying) {
       videoRef.current.pause();
+      setProgressPaused(true);
     } else {
       videoRef.current.play();
+      setProgressPaused(false);
     }
     setIsPlaying(!isPlaying);
   };
 
+  const toggleMute = () => {
+    if (!videoRef.current) return;
+    const newMuted = !isMuted;
+    videoRef.current.muted = newMuted;
+    setIsMuted(newMuted);
+  };
+
   return (
-    <div className={styles.storyWrapper}>
-      {/* Progress bars */}
-      <div className={styles.progressRow}>
-        {flattenedStories.map((_, idx) => (
-          <div key={idx} className={styles.progressContainer}>
-            <div
-              className={`${styles.progressFill} ${
-                idx === currentIndex ? styles.animateFill : ""
-              }`}
-              style={{
-                animationDuration:
-                  idx === currentIndex ? `${activeDuration}ms` : "0ms",
-                width: idx < currentIndex ? "100%" : undefined,
-              }}
-            ></div>
-          </div>
-        ))}
-      </div>
+    <>
+      <div className={styles.storyWrapper}>
+        <div className={styles.progressRow}>
+          {flattenedStories.map((_, idx) => (
+            <div key={idx} className={styles.progressContainer}>
+              <div
+                className={`${styles.progressFill} ${
+                  idx === currentIndex ? styles.animateFill : ""
+                }`}
+                style={{
+                  animationDuration:
+                    idx === currentIndex ? `${activeDuration}ms` : "0ms",
+                  animationPlayState: progressPaused ? "paused" : "running",
+                  width: idx < currentIndex ? "100%" : undefined,
+                }}
+              ></div>
+            </div>
+          ))}
+        </div>
 
-      {/* Swiper stories */}
-      <Swiper
-        modules={[Navigation]}
-        loop={false}
-        onSwiper={setSwiperInstance}
-        onSlideChange={(swiper) => {
-          setCurrentIndex(swiper.activeIndex);
+        <Swiper
+          modules={[Navigation]}
+          loop={false}
+          onSwiper={setSwiperInstance}
+          onSlideChange={(swiper) => {
+            setCurrentIndex(swiper.activeIndex);
 
-          // Play the active video if it exists
-          const activeVideo =
-            swiper.slides[swiper.activeIndex].querySelector("video");
-          if (activeVideo) {
-            activeVideo.currentTime = 0; // restart from beginning
-            activeVideo
-              .play()
-              .catch((err) => console.warn("Auto-play failed", err));
-          }
-        }}
-        className={styles.storySwiper}
-      >
-        {flattenedStories.map((story, idx) => {
-          const video = story.video_versions?.[0]?.url;
-          const image =
-            story.image_versions2?.candidates?.[0]?.url ||
-            story.display_resources?.[0]?.src ||
-            story.image_versions?.standard_resolution?.url;
+            const allVideos = swiper.slides.flatMap((slide) =>
+              Array.from(slide.querySelectorAll("video"))
+            );
+            allVideos.forEach((vid) => {
+              vid.pause();
+              vid.muted = true;
+            });
 
-          return (
-            <SwiperSlide key={idx}>
-              <div className={styles.storySlide}>
-                {video ? (
-                  <>
+            // Play & apply mute setting to the active one
+            const activeVideo =
+              swiper.slides[swiper.activeIndex].querySelector("video");
+            if (activeVideo) {
+              activeVideo.currentTime = 0;
+              activeVideo.muted = isMuted;
+              activeVideo
+                .play()
+                .catch((err) => console.warn("Auto-play failed", err));
+            }
+          }}
+          className={styles.storySwiper}
+        >
+          {flattenedStories.map((story, idx) => {
+            const video = story.video_versions?.[0]?.url;
+            const image =
+              story.image_versions2?.candidates?.[0]?.url ||
+              story.display_resources?.[0]?.src ||
+              story.image_versions?.standard_resolution?.url;
+
+            return (
+              <SwiperSlide key={idx}>
+                <div className={styles.storySlide}>
+                  {video ? (
                     <video
                       ref={idx === currentIndex ? videoRef : null}
                       src={video}
@@ -143,69 +165,80 @@ export default function StoryPreview({ stories = [] }) {
                       className={styles.storyMedia}
                       onError={(e) => console.warn("Video failed to load:", e)}
                     />
-                  </>
-                ) : image ? (
-                  <img
-                    src={image}
-                    alt={`story-${idx}`}
-                    className={styles.storyMedia}
-                    onError={(e) => {
-                      const altImage =
-                        story.display_resources?.[1]?.src ||
-                        story.image_versions?.low_resolution?.url;
-                      if (altImage && e.target.src !== altImage) {
-                        e.target.src = altImage;
-                      }
-                    }}
-                  />
-                ) : (
-                  <div className={styles.storyPlaceholder}>
-                    <p>Story content not available</p>
-                  </div>
-                )}
-
-                {/* Top bar with username + play/pause */}
-                <div className={styles.storyTopBar}>
-                  <div className={styles.storyUser}>
-                    {story.user?.profile_pic_url && (
-                      <img
-                        src={story.user.profile_pic_url}
-                        alt={story.user?.username}
-                        className={styles.storyAvatar}
-                        onError={(e) => (e.target.style.display = "none")}
-                      />
-                    )}
-                    <span>@{story.user?.username || "unknown"}</span>
-                  </div>
-
-                  {video && idx === currentIndex && (
-                    <button
-                      className={styles.playPauseButton}
-                      onClick={togglePlayPause}
-                    >
-                      {isPlaying ? <FaPause /> : <FaPlay />}
-                    </button>
+                  ) : image ? (
+                    <img
+                      src={image}
+                      alt={`story-${idx}`}
+                      className={styles.storyMedia}
+                      onError={(e) => {
+                        const altImage =
+                          story.display_resources?.[1]?.src ||
+                          story.image_versions?.low_resolution?.url;
+                        if (altImage && e.target.src !== altImage) {
+                          e.target.src = altImage;
+                        }
+                      }}
+                    />
+                  ) : (
+                    <div className={styles.storyPlaceholder}>
+                      <p>Story content not available</p>
+                    </div>
                   )}
-                </div>
-              </div>
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
 
-      {/* Navigation buttons */}
-      <button
-        ref={prevRef}
-        className={`${styles.navButton} ${styles.prevButton}`}
-      >
-        <FaChevronLeft />
-      </button>
-      <button
-        ref={nextRef}
-        className={`${styles.navButton} ${styles.nextButton}`}
-      >
-        <FaChevronRight />
-      </button>
-    </div>
+                  <div className={styles.storyTopBar}>
+                    <div className={styles.storyUser}>
+                      {story.user?.profile_pic_url && (
+                        <img
+                          src={story.user.profile_pic_url}
+                          alt={story.user?.username}
+                          className={styles.storyAvatar}
+                          onError={(e) => (e.target.style.display = "none")}
+                        />
+                      )}
+                      <span>@{story.user?.username || "unknown"}</span>
+                    </div>
+
+                    {video && idx === currentIndex && (
+                      <div className={styles.controlButtons}>
+                        <button
+                          className={styles.muteButton}
+                          onClick={toggleMute}
+                        >
+                          {isMuted ? <FaVolumeMute /> : <FaVolumeUp />}
+                        </button>
+
+                        <button
+                          className={styles.playPauseButton}
+                          onClick={togglePlayPause}
+                        >
+                          {isPlaying ? <FaPause /> : <FaPlay />}
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+        <SwiperNavigation swiper={swiperInstance} />
+      </div>
+      <div className={styles.shareDownload}>
+        <button
+          className={styles.shareBtn}
+          onClick={() => handleDownloadAll(mediaUrls)}
+        >
+          Download All
+        </button>
+        <button
+          className={styles.shareBtn}
+          onClick={() => handleShareAll(mediaUrls)}
+        >
+          Share All
+        </button>
+      </div>
+
+      <MediaGallery mediaUrls={mediaUrls} />
+    </>
   );
 }
