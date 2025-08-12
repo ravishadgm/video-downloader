@@ -8,14 +8,12 @@ import {
   handleDownload,
   handleDownloadAll,
 } from "@/instaModal/hooks/download/download";
-import { FaRegHeart } from "@/icons/index";
-import { IoIosEye } from "@/icons/index";
+import { FaRegHeart,FaRegComment } from "@/icons/index";
+
 import styles from "./BottomActivityPanel.module.scss";
 
 export default function BottomActivityPanel({ data }) {
   const {
-    currentMediaUrl,
-    currentMediaIndex,
     mediaUrls = [],
     likes = 0,
     views = 0,
@@ -31,22 +29,7 @@ export default function BottomActivityPanel({ data }) {
       <div className={styles.acitivityDetails}>
         <div className={styles.insideAcitivity}>
           <FaRegHeart />
-          <IoIosEye />
-        </div>
-
-        <div className={styles.shareDownload}>
-          <button
-            className={styles.innerBtn}
-            onClick={() => handleDownload(currentMediaUrl, currentMediaIndex)}
-          >
-            Download
-          </button>
-          <button
-            className={styles.innerBtn}
-            onClick={() => handleShare(currentMediaUrl)}
-          >
-            Share
-          </button>
+          <FaRegComment  />
         </div>
       </div>
 
@@ -63,13 +46,15 @@ export default function BottomActivityPanel({ data }) {
               className={styles.shareBtn}
               onClick={() => handleDownloadAll(mediaUrls)}
             >
-              Download All
+              {mediaUrls.length > 1
+                ? `Download All (${mediaUrls.length})`
+                : "Download"}
             </button>
             <button
               className={styles.shareBtn}
               onClick={() => handleShareAll(mediaUrls)}
             >
-              Share All
+              {mediaUrls.length > 1 ? `Share All (${mediaUrls.length})` : "Share"}
             </button>
           </div>
         </div>

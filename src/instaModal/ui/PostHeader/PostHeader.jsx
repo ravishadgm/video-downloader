@@ -3,11 +3,15 @@
 import Image from "next/image";
 import styles from "./PostHeader.module.scss";
 
-export default function PostHeader({ thumbnail, username }) {
+export default function PostHeader({ thumbnail, username, fullName }) {
   if (!username) return null;
-  console.log(thumbnail, "logo--------");
 
-  const initials = username.slice(0, 2).toUpperCase();
+  const initials = fullName
+    ?.split(" ")
+    .filter(Boolean)
+    .map((word) => word[0])
+    .join("")
+    .toUpperCase();
 
   return (
     <div className={styles.header}>

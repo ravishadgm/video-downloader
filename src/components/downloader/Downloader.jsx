@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation"; // <-- for auto-active based on URL
 import MediaPreview from "@/components/mediaPreview/MediaPreview";
 import styles from "./style.module.scss";
 import { mainNavLinks } from "@/dataStore/linksContent";
@@ -21,21 +22,22 @@ export default function Downloader({
     description: subtitle,
   });
 
-useEffect(() => {
-  if (pageMeta.title) {
-    document.title = pageMeta.title;
-  }
-  if (pageMeta.description) {
-    let metaDescriptionTag = document.querySelector('meta[name="description"]');
-    if (!metaDescriptionTag) {
-      metaDescriptionTag = document.createElement('meta');
-      metaDescriptionTag.setAttribute('name', 'description');
-      document.head.appendChild(metaDescriptionTag);
-    }
-    metaDescriptionTag.setAttribute('content', pageMeta.description);
-  }
-}, [pageMeta]);
+  const pathname = usePathname(); // gets the current URL path
 
+  useEffect(() => {
+    if (pageMeta.title) {
+      document.title = pageMeta.title;
+    }
+    if (pageMeta.description) {
+      let metaDescriptionTag = document.querySelector('meta[name="description"]');
+      if (!metaDescriptionTag) {
+        metaDescriptionTag = document.createElement("meta");
+        metaDescriptionTag.setAttribute("name", "description");
+        document.head.appendChild(metaDescriptionTag);
+      }
+      metaDescriptionTag.setAttribute("content", pageMeta.description);
+    }
+  }, [pageMeta]);
 
   const handleDownload = async (e) => {
     e.preventDefault();
@@ -76,12 +78,13 @@ useEffect(() => {
     <>
       <div className={styles.wrapper}>
         <nav className={styles.category}>
-          {mainNavLinks?.map(
-            (
-              { label, icon, href, metaTitle, metaDescription },
-              idx
-            ) => (
-              <div className={styles.category_element} key={idx}>
+          {mainNavLinks?.map(({ label, icon, href, metaTitle, metaDescription }, idx) => {
+            const isActive = pathname === href; // check if current route matches link
+            return (
+              <div
+                className={`${styles.category_element} ${isActive ? styles.active : ""}`}
+                key={idx}
+              >
                 <Link
                   href={href}
                   onClick={() =>
@@ -95,11 +98,9 @@ useEffect(() => {
                   <span>{label}</span>
                 </Link>
               </div>
-            )
-          )}
+            );
+          })}
         </nav>
-
-    
 
         <h1 className={styles.title}>{title}</h1>
         <p className={styles.subtitle}>{subtitle}</p>

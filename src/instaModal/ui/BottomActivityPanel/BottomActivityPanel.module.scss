@@ -23,7 +23,7 @@
     .insideAcitivity {
       display: flex;
       align-items: center;
-      gap: 25px;
+      gap: 15px;
       svg {
         font-size: 24px;
       }
@@ -39,12 +39,5 @@
       font-size: 14px;
     }
   }
-  .innerBtn {
-    border: 1px solid lightgray;
-    border-radius: 10px;
-    padding: 8px;
-    width: 100px;
-    text-transform: capitalize;
-    font-size: 14px;
-  }
+
 }

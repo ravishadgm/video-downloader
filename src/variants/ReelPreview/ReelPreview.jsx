@@ -6,7 +6,7 @@ import { handleDownload } from "@/instaModal/hooks/download/download";
 import { FaHeart, FaEye, FaPaperPlane } from "react-icons/fa";
 import styles from "./ReelPreview.module.scss";
 
-export default function ReelPreview({ data, onShare }) {
+export default function ReelPreview({ data }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const videoRef = useRef(null);
@@ -80,7 +80,7 @@ export default function ReelPreview({ data, onShare }) {
             <FaEye />
             <span>{formatNumber(data.views)} </span>
           </div>
-          <div className={styles.icon} onClick={onShare}>
+          <div className={styles.icon} onClick={() => handleShare(data?.mediaUrls[0])}>
             <FaPaperPlane />
             <span>Share</span>
           </div>
