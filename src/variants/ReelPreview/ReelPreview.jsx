@@ -7,7 +7,7 @@ import { FaHeart, FaEye, FaPaperPlane } from "react-icons/fa";
 import styles from "./ReelPreview.module.scss";
 
 export default function ReelPreview({ data, onShare }) {
-  console.log(onShare,"onShareonShareonShareonShare")
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const videoRef = useRef(null);
@@ -27,7 +27,7 @@ export default function ReelPreview({ data, onShare }) {
   };
 
   const toggleCaption = () => setIsExpanded(!isExpanded);
-  console.log(data.mediaUrls[0], "data.mediaUrlsdata.mediaUrls");
+
   return (
     <div className={styles.reelContainer}>
       <video

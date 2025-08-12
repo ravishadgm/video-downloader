@@ -173,7 +173,7 @@ export const categoryContent = {
     },
   },
   story: {
-    title: "Story Saver",
+    title: "Instagram Story Downloader",
     subtitle: "Download your Instagram story and highlights easily!",
     about: {
       image: Images.Download,
