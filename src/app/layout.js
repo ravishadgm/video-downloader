@@ -28,6 +28,18 @@ export default function RootLayout({ children }) {
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
+
+        <meta property="og:title" content="InstaDL - Free Video Downloader" />
+        <meta property="og:description" content="Download videos instantly from your favorite platforms for free." />
+        <meta property="og:image" content="https://video-downloader-sigma-seven.vercel.app/og-image.jpg" />
+        <meta property="og:url" content="https://video-downloader-sigma-seven.vercel.app/" />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="InstaDL - Free Video Downloader" />
+        <meta name="twitter:description" content="Download videos instantly from your favorite platforms for free." />
+        <meta name="twitter:image" content="https://video-downloader-sigma-seven.vercel.app/og-image.jpg" />
       </head>
       <body className="layout-wrapper">
         <Header />

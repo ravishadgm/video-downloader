@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  compress: true, // Enable response compression for HTML/JS/CSS
+  compress: true, 
 
   sassOptions: {
     additionalData: `

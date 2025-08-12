@@ -11,9 +11,9 @@ export default function WhyUs() {
     <section className={styles.wrapper} aria-labelledby={titleId} role="region">
       <div className={styles.container}>
         <div className={styles.header}>
-          <h1 className={styles.title} id={titleId}>
+          <h3 className={styles.title} id={titleId}>
             Choose InstaDl.app for download from Instagram
-          </h1>
+          </h3>
 
           <p className={styles.description}>
             Downloading videos from Instagram in just two clicks is possible

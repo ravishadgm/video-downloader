@@ -28,9 +28,9 @@ export default function Page({ params }) {
     <section className={styles.wrapper}>
       <div className={styles.container}>
         <header className={styles.header}>
-          <h1 id={titleId} className={styles.title}>
+          <h3 id={titleId} className={styles.title}>
             {pageData.title}
-          </h1>
+          </h3>
           <p className={styles.description}>{pageData.description}</p>
         </header>
 

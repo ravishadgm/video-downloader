@@ -12,9 +12,9 @@ export default function page() {
   return (
     <main className={styles.ContactWrapper}>
       <div className={styles.container}>
-        <h1 id={headingId} className={styles.heading}>
+        <h3 id={headingId} className={styles.heading}>
           Contact Us
-        </h1>
+        </h3>
         <div className={styles.content} aria-labelledby={headingId}>
           <p>
             Do you want to know more about how we could help you? Don’t hesitate
