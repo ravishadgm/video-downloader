@@ -25,8 +25,9 @@ export default function DownloadDescription({
   return (
     <section
       className={styles.wrapper}
-      aria-labelledby={heading ? headingId : undefined}
       role="region"
+      aria-labelledby={heading ? headingId : undefined}
+      aria-label={!heading ? title : undefined}
     >
       <div className={styles.container}>
         {heading && (

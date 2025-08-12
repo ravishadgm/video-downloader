@@ -8,13 +8,12 @@ export default function WhyUs() {
   const titleId = React.useId();
 
   return (
-    <section className={styles.wrapper} aria-labelledby={titleId} role="region">
+    <section className={styles.wrapper} aria-labelledby={titleId}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h3 className={styles.title} id={titleId}>
+          <h3 id={titleId} className={styles.title}>
             Choose InstaDl.app for download from Instagram
           </h3>
-
           <p className={styles.description}>
             Downloading videos from Instagram in just two clicks is possible
             without compromising on quality. Avoid using unreliable applications
@@ -23,52 +22,52 @@ export default function WhyUs() {
         </div>
 
         <div className={styles.featuresGrid}>
-          <article className={styles.feature} role="group" tabIndex={0}>
+          <article className={styles.feature}>
             <MdDownload
-              className={styles.icon}
               aria-hidden="true"
               focusable="false"
+              className={styles.icon}
             />
-            <h3 className={styles.featureTitle}>Fast download</h3>
+            <h4 className={styles.featureTitle}>Fast download</h4>
             <p className={styles.featureDescription}>
               Our servers are optimized to provide you with the fastest download
               speeds.
             </p>
           </article>
 
-          <article className={styles.feature} role="group" tabIndex={0}>
+          <article className={styles.feature}>
             <MdDevices
-              className={styles.icon}
               aria-hidden="true"
               focusable="false"
+              className={styles.icon}
             />
-            <h3 className={styles.featureTitle}>Support for all devices</h3>
+            <h4 className={styles.featureTitle}>Support for all devices</h4>
             <p className={styles.featureDescription}>
               Whether you're on a mobile, tablet, or desktop, InstaDl has got
               you covered.
             </p>
           </article>
 
-          <article className={styles.feature} role="group" tabIndex={0}>
+          <article className={styles.feature}>
             <MdThumbUp
-              className={styles.icon}
               aria-hidden="true"
               focusable="false"
+              className={styles.icon}
             />
-            <h3 className={styles.featureTitle}>High quality</h3>
+            <h4 className={styles.featureTitle}>High quality</h4>
             <p className={styles.featureDescription}>
               Download Instagram content in its original quality without any
               loss.
             </p>
           </article>
 
-          <article className={styles.feature} role="group" tabIndex={0}>
+          <article className={styles.feature}>
             <MdSecurity
-              className={styles.icon}
               aria-hidden="true"
               focusable="false"
+              className={styles.icon}
             />
-            <h3 className={styles.featureTitle}>Security</h3>
+            <h4 className={styles.featureTitle}>Security</h4>
             <p className={styles.featureDescription}>
               We prioritize your privacy. No login required and all downloads
               are processed securely.

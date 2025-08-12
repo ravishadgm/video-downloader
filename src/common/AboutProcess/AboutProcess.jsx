@@ -48,11 +48,13 @@ export default function AboutProcess({
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                 </div>
+
+                <div className={styles.imgDescription}>
+                  <h4>{step.title}</h4>
+
+                  <p>{step.text}</p>
+                </div>
               </Link>
-              <div className={styles.imgDescription}>
-                <h4>{step.title}</h4>
-                <p>{step.text}</p>
-              </div>
             </div>
           ))}
         </div>
