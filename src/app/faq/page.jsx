@@ -12,7 +12,7 @@ export default function page() {
   return (
     <FaqSection
       title="FAQ - frequently asked question"
-      intro="Ok. Suppose you are here on this page now. In that case, you might be looking for clarifying questions about how to download Instagram photos and videos. So, look below and find the most commonly asked questions about one of the best Instagram Downloaders and their answers."
+      intro="You’re here on this page, so you might be looking for help with downloading Instagram photos and videos. Let’s go through the most common questions people have about instadl.app and the answers."
       faqs={mainFaq}
     />
   );

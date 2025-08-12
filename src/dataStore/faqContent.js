@@ -2,69 +2,65 @@ import Images from "../../public/images/index";
 
 export const faqs = [
   {
-    question: `What exactly is InstaDl.app?`,
+    question: `What is InstaDl.app?`,
     answer:
-      "InstaDl.app is a browser-based helper that lets you save public Instagram content - videos, photos, Reels, Stories, IGTV and carousels - to your own device for offline viewing. It works straight from the website; no software install is required.",
+      "InstaDl.app is a web tool that lets you save Instagram posts like photos, videos, Reels, Stories, IGTV, and carousels to your device so you can watch them offline.",
   },
   {
-    question: "Is downloading from Instagram legal?",
+    question: "Is it legal to download from Instagram?",
     answer:
-      "Saving public posts for personal use is generally allowed, but copyright always belongs to the creator. Please keep the files private unless you have the owner’s permission to share or reuse them.",
+      `It’s generally okay to save public posts for your own use. But remember, the copyright stays with the original creator. Keep the files private unless you have permission to share them.`,
   },
   {
-    question: "What formats and quality do you offer?",
+    question: "Do I need to sign up or log in?",
     answer:
-      "Photos arrive as JPG (up to 1080 × 1350 px - the platform’s own limit). Videos save as MP4, typically in HD 720p if the source was uploaded in that quality. No watermarks are added.",
+      `No, you don’t. Just copy the Instagram link and paste it into InstaDl.app. No account is needed, no Instagram login, and no tracking cookies.`,
   },
   {
-    question: "Do I need to log in or create an account?",
+    question: "Are there any limits on how much I can download?",
     answer:
-      "No. Just paste the Instagram link - there’s no registration, no Instagram credentials, and no cookies that track you across the web.",
-  },
-  {
-    question: "Are there any limits on daily downloads?",
-    answer:
-      "None at all. Download one item or a hundred - our servers don’t impose caps.",
+      `No. You can download as many posts as you want. Our servers don’t put any limits on the number of files.`,
   },
   {
     question: "How do I download a post?",
     answer: [
-      "1. Copy the link to the Instagram post or Reel",
-      "2. Go to InstaDl.app, paste the link into the field, and hit Download",
-      "3. Pick the quality you want; the file is delivered instantly",
+      "1. Copy the link to an Instagram post.",
+      "2. Go to InstaDl.app and paste the link into the box.",
+      "3. Click Download and choose the quality you want. The file will be sent to you right away.",
     ],
   },
   {
-    question: "Can I grab content from private accounts?",
+    question: "Can I download content from private accounts?",
     answer:
-      "Sorry, no. We respect user privacy, so only public posts are accessible. If you can’t view the post in a logged-out browser tab, InstaDl.app can’t fetch it either.",
+      `No, we can’t. We respect privacy, so only public posts are available. If the post isn’t visible when you’re not logged into Instagram, InstaDl.app can’t get it either.`,
   },
   {
-    question: "Which devices and browsers are supported?",
+    question: "Which devices and browsers work with InstaDl.app?",
     answer:
-      "Any modern browser on Windows, macOS, Linux, Android, iOS or even ChromeOS. Tested in Chrome, Safari, Firefox, Edge, Opera and Brave - both desktop and mobile versions.",
+      `It works on any modern browser on Windows, macOS, Linux, Android, iOS, or ChromeOS. We’ve tested it on Chrome, Safari, Firefox, Edge, Opera, and Brave — both on desktop and mobile.`,
   },
   {
     question: "Where do the files go on my phone or computer?",
     answer:
-      "On desktop they land in your default “Downloads” folder. On mobile you can find them in the browser’s downloads list or the “Files” app. Most gallery apps will index them automatically.",
+      `On desktop, the files go to your default “Downloads” folder. On mobile, they’ll appear in your browser’s download list or in the “Files” app. Most gallery apps will show them automatically.`,
   },
   {
     question: "Is my link history stored on your servers?",
     answer:
-      "No. Links are processed in real time; once the download link is generated and delivered, both the original URL and the converted file are wiped from our cache.",
+      `No.
+Links are processed in real time, and once the download is complete, both the original link and the converted file are removed from our servers.`,
   },
   {
-    question: "Why might the speed drop?",
+    question: "Why might the download be slow?",
     answer:
-      "A slow network, heavy ISP throttling or Instagram rate-limits can reduce throughput. Switching to another Wi-Fi, disabling a VPN, or trying a different browser usually fixes it. If not, reach out through the contact page - we answer fast.",
+      `Slowness can happen because of a weak internet connection, heavy ISP throttling, or Instagram’s rate limiting. Try switching to another Wi-Fi, turning off a VPN, or using a different browser. If that doesn’t help, contact us through the contact page — we respond quickly.`,
   },
 ];
 export const steps = [
   {
     image: Images.step1,
     title: "Copy the URL",
-    text: "Open the Instagram application or website, copy the URL of the photo, video, reels, carousel, IGTV.",
+    text: "Open the Instagram, copy the URL of the post, story, reels, video, carousel, IGTV.",
     link: "/"
   },
   {
@@ -91,12 +87,12 @@ export const videoFaqs = [
     question:
       "Is there a fee for using Instagram Video Downloader offered by InstaDl?",
     answer:
-      "This Instagram Video Downloader is offered without any additional fees. It is absolutely free of charge for all the videos you want to download.",
+      "This Instagram Video Downloader is completely free to use. There are no extra costs or charges for downloading any videos you wish to save.",
   },
   {
     question: "What devices are compatible with this built-in Downloader?",
     answer:
-      "There are no limitations on devices or operating systems. Whether you use an iPhone, Android, or a computer, you can effortlessly download your favorite videos. Ensure you have sufficient memory space. Popular operating systems like macOS, Windows, and Linux are also supported for downloading video content.",
+      "You can use any device or operating system without any restrictions. Whether you're on an iPhone, Android phone, or a computer, you can easily download your favorite videos. Just make sure your device has enough storage space. Video downloads are also supported on common operating systems like macOS, Windows.",
   },
   {
     question: "Are there any limits on the number of videos I can download?",
@@ -259,13 +255,13 @@ export const storySteps = [
   {
     image: Images.step2,
     title: "Paste the link",
-    text: "Once you copied the Story link, the next step you should follow is to paste it onto the appropriate field, then hit the Download button",
+    text: "Paste the copied link into the designated box, then tap the Download button to initiate.",
     link: "/story"
   },
   {
     image: Images.step3,
     title: "Download",
-    text: `By pressing the Download button, you are downloading the Story. This Story file will be saved to the Downloads folder if you have an iPhone or to the downloads gallery in case you have an Android`,
+    text: `After tapping Download, the Story will be stored automatically—on iPhones it goes to your Downloads folder, while on Android it appears in your device’s default download gallery.`,
     link: "/story"
   },
 ];
@@ -274,25 +270,25 @@ export const igtvFaq = [
   {
     question: "Is InstaDl private?",
     answer:
-      "YES, it is an online service that does not keep logs of personal video downloading. We log all failed attempts for self-improvement needed for optimization purposes.",
+      `Yes, it's an online service that doesn’t keep records of the videos people download. We do keep track of failed attempts to help improve and make the service better.`,
   },
   {
-    question: `What's the charge for the IGTV Downloader?`,
-    answer: `We do not charge for our services. It’s free! We have some small pop-up advertisements to keep the service working.`,
-  },
-  {
-    question:
-      "Is there a length limit of a video file that I want to save by using the service of the IGTV video downloader?",
-    answer: `The length can vary from 1 second to up to 15 minutes but without any restrictions for public posts. You should only bear in mind that in case you prefer long length video you must have enough memory on your device.`,
+    question: `Is there a cost for using the IGTV downloader?`,
+    answer: `No, our service is free! We show some small ads to help keep the service running.`,
   },
   {
     question:
-      "Does this IGTV video downloader have compatibility with all types of devices?",
-    answer: `Yes, all devices are compatible to get videos from Instagram and download them with IGTV downloader. If you are using a computer, PC, desktop, laptop, iPad, or a smartphone. Any of the mentioned devices with a browser will work.`,
+      "Is there a limit on how long a video can be when I download it using the IGTV video downloader?",
+    answer: `Videos can be from 1 second up to 15 minutes long, with no limits for public posts. Just remember that if you want to download a longer video, you need enough storage space on your device.`,
   },
   {
-    question: `Is there a need for installing this IGTV downloader on my device to save a video from Instagram?`,
-    answer: `There is no need for installing as it is a cloud-based tool. The only need is to paste the link and then see what happens!`,
+    question:
+      "Does the IGTV video downloader work with all types of devices?",
+    answer: `Yes, it works with all devices. Whether you're using a computer, laptop, desktop, iPad, or smartphone, as long as you have a browser, you can use the service.`,
+  },
+  {
+    question: `Do I need to install the IGTV downloader on my device to save a video from Instagram?`,
+    answer: `No, you don’t need to install anything. It’s a cloud-based tool, so all you need to do is paste the link and watch it work!`,
   },
 ];
 export const igtvSteps = [
@@ -305,13 +301,13 @@ export const igtvSteps = [
   {
     image: Images.step2,
     title: "Paste the link",
-    text: "Return to the InstaDl website, paste the link into the input field and click the “Download” button.",
+    text: "Go back to the InstaDl website, enter the link in the box, and press the “Download” button.",
     link: "/igtv"
   },
   {
     image: Images.step3,
     title: "View and Download",
-    text: `Click the Download button to save the photo(s) to your device. Download what fits your needs.`,
+    text: `Click the Download button to save the photo(s) on your device. Download the ones that work best for you.`,
     link: "/igtv"
   },
 ];
@@ -319,32 +315,32 @@ export const igtvSteps = [
 export const carouselFaq = [
   {
     question:
-      "What is the easiest way to download multiple instagram photos or videos?",
+      "What is the easiest way to download multiple Instagram photos or videos?",
     answer: [
-      "1. Go to Instagram and find a carousel post you want to be downloaded.",
+      "1. Go to Instagram and find a carousel post you want to download.",
       "2. Open the carousel post.",
       "3. Copy its URL then open the InstaDl webpage.",
-      "4. Paste the copied URL onto the indicated field on InstaDl.",
+      "4. Go to the InstaDl website and paste the URL into the blank field",
       "5. Click the Download button.",
     ],
   },
   {
-    question: `How about the quality of the photos and videos I save from a Carousel?`,
-    answer: `The quality of a saved Carousel post remains the same as the owner originally uploaded it. Full HD or any other high resolution is preserved using the InstaDl downloader.`,
+    question: `How good is the quality of the photos and videos I save from a Carousel?`,
+    answer: `The quality of a saved Carousel post is the same as the original uploaded by the owner.InstaDl keeps the full HD or other high resolution quality when you download it.`,
   },
   {
     question:
-      "Is there a length limit of a video file that I want to save by using the service of the IGTV video downloader?",
-    answer: `The length can vary from 1 second to up to 15 minutes but without any restrictions for public posts. You should only bear in mind that in case you prefer long length video you must have enough memory on your device.`,
+      "Is there a limit on how long a video file can be when saving using the IGTV video downloader?",
+    answer: `Videos can range from 1 second up to 15 minutes, and there are no restrictions for public posts.Just keep in mind that if you want to save longer videos, you need to make sure your device has enough storage space.`,
   },
   {
     question:
-      "Would there be any troubles in case of downloading a carousel post on a PC or a Mobile?",
-    answer: `No troubles or problems with using this image downloader as it is an online service and relies on a web browser. Feel free to use any device you like with a workable web browser and internet connection.`,
+      "Will there be any issues when downloading a carousel post on a PC or a mobile device?",
+    answer: `No, there are no issues or problems with using this downloader because it is an online service that works through a web browser. You can use any device with a working web browser and internet connection.`,
   },
   {
-    question: `What exactly is an Instagram carousel (also known as a slideshow)?`,
-    answer: `An Instagram carousel, often referred to as a slideshow, allows users to share multiple photos or videos within a single post, with a limit of up to ten items per slideshow. Mobile users can swipe left and right to navigate through these posts, while desktop users can click the arrow button on the right side of the post to view the carousel. Easily download Instagram slideshows using "InstaDl" with just a few simple steps.`,
+    question: `What is an Instagram carousel(also called a slideshow)?`,
+    answer: `An Instagram carousel, also known as a slideshow, lets users share several photos or videos in one post, up to 10 items. On mobile, you can swipe left and right to go through the slides. On desktop, you can click the arrow button on the right of the post to view the carousel. You can easily download Instagram slideshows using InstaDl with just a few simple steps.`,
   },
 ];
 export const carouselSteps = [
@@ -363,7 +359,7 @@ export const carouselSteps = [
   {
     image: Images.step3,
     title: "View and Download",
-    text: `Click the Download button to save the Carousel to your device. Download what fits your needs.`,
+    text: `Click the Download button to save the Carousel to your device.Download what fits your needs.`,
     link: "/carousel"
   },
 ];
@@ -372,23 +368,23 @@ export const viewFaq = [
   {
     question: "Is it possible to use Instagram Story Viewer to my PC?",
     answer:
-      "Of course, by all means. As an online service, InstaDl works directly in your browser. Using this Instagram Story Viewer for your PC will not be a problem. Our stories downloader service is also available for tablets, Macs, and phones. Our photo downloading service is also available for tablets or phones.",
+      "Sure, feel free to proceed. InstaDl operates directly in your browser as an online service. Using this Instagram Story Viewer on your PC is perfectly fine. Our story downloader service is also accessible on tablets, Macs, and phones. Additionally, our photo downloading service is available for tablets and phones as well.",
   },
   {
-    question: `What type of file formats does InstaDl support for downloading?`,
-    answer: `The most convenient these days is the JPG file format for downloading images. As for the videos, the MP4 file format is still considered the most popular worldwide, ensuring high quality and a small video file size.`,
+    question: `What file types does InstaDl support for downloads ? `,
+    answer: `The easiest one to use now is the JPG format for downloading pictures.For videos, the MP4 format is still the most widely used around the world, offering good quality and keeping the file size small.`,
   },
   {
     question: "Is this Instagram Stories Viewer a free service?",
-    answer: `Yes! Our Instagram picture downloader is completely FREE. No need for registration of an account or other types of paid service charging.`,
+    answer: `Yes! Our Instagram picture downloader is completely FREE.No need for registration of an account or other types of paid service charging.`,
   },
   {
     question: "What other devices are compatible with the InstaDl downloader?",
-    answer: `InstaDl is a versatile web service. Whether you're on an iPad, iPhone, Android device, or any other platform, InstaDl picture downloader works seamlessly. All other gadgets, including PCs, are fully supported by this photo downloader. All you need is a web browser to get started!`,
+    answer: `InstaDl is a versatile web service.Whether you're on an iPad, iPhone, Android device, or any other platform, InstaDl picture downloader works seamlessly. All other gadgets, including PCs, are fully supported by this photo downloader. All you need is a web browser to get started!`,
   },
   {
-    question: `How safe is to download Instagram Stories with InstaDl?`,
-    answer: `It is safe! No fear to download Instagram stories with InstaDl. Our safety policy says not to collect users' data using this tool. We care about your trust in us!`,
+    question: `It's safe to download Instagram stories with InstaDl?`,
+    answer: `It is safe! You don't need to worry about it. Our safety policy makes sure we don't collect any of your data using this tool. We really value your trust in us!`,
   },
 ];
 export const viewSteps = [
@@ -401,7 +397,7 @@ export const viewSteps = [
   {
     image: Images.step2,
     title: "Paste the link",
-    text: "Paste the link to the input line on the Instagram Story Viewer page. Remember to have the InstaDl web page already opened.",
+    text: "Paste the link from the input line on the Instagram Story Viewer page. Make sure the InstaDl web page is already open.",
     link: "/viewer"
   },
   {
@@ -414,49 +410,50 @@ export const viewSteps = [
 
 export const mainFaq = [
   {
-    question: "What is instadl.app and why you might need it for?",
-    answer: `Downloading and saving photos or/and videos from Instagram is now possible by using instadl.app. It is the easiest and most convenient way to enjoy “the watching for later those moments of happiness and memories.”`,
+    question: "What is instadl.app and why would you need it?",
+    answer: `Instadl.app helps you download and save photos or videos from Instagram. It’s the easiest and most convenient way to save your favorite moments and memories to watch later.`,
   },
   {
-    question: `instadl.app and its advantages:`,
+    question: `Advantages of using instadl.app:`,
     answer: [
-      "1. By inserting an address bar, you will get fast and appropriate access to it.",
-      "2. If there is any desired video in a public Instagram post, now you can download it directly.",
-      "3. Multiple photos on a single picture are fine now. There will be links for downloading all of them.",
-      "4. The videos that are downloaded for Instagram are of high quality.",
-      "5. No need for extra adware programs or lack of time when downloading from Instagram.",
+      "1. You can quickly access it by entering the address in your browser.",
+      "2.If there’s a video in a public Instagram post, you can download it directly.",
+      "3. If there are multiple photos in a single post, you can download all of them with links.",
+      "4. The quality of the downloaded videos is high.",
+      "5. You don’t need to install extra software or spend a lot of time.",
     ],
   },
   {
-    question: "A Note to the right holders:",
-    answer: `Dear right holders, please remember that instadl.app does not store any files or publish any links on its servers. All your files are stored on the official website of Instagram. If you consider that your copyright has been violated, don't hesitate to get in touch with the administration at instagram.com.`,
+    question: "Important note for content owners:",
+    answer: `Dear content creators, please know that instadl.app does not store any files or share any links on its servers. All your content is saved on Instagram’s official website. If you feel your work has been used without permission, please contact Instagram’s support at instagram.com.`,
   },
   {
-    question: "Where are the downloaded files stored?",
-    answer: `Well, normally, you go to the latest downloading list by pressing Ctrl+J. It also depends on how your operating system and browser are set, as it can also open in a new browser tab once you get the list. You will see how to find the storage of your downloaded files.`,
+    question: "Where are the downloaded files saved?",
+    answer: `Typically, you can access your download list by pressing Ctrl + J. The location may vary based on your browser and operating system. It might open in a new tab or directly show you where the files are stored. You can check how to find your download folder.`,
   },
   {
-    question: `What is the quality of the content downloaded by InstaDl?`,
-    answer: `Only one answer to this question: all video and photo content is the same quality as the owner’s uploaded. No change in the media applied by us!`,
+    question: `What quality does InstaDl use for downloaded content?`,
+    answer: `The short answer is: the same quality as the original. We don’t alter the videos or photos in any way.`,
   },
   {
-    question: `Is downloading private Instagram posts prohibited?`,
-    answer: `The is No prohibition for downloading videos that are published on Instagram. All content that is posted in an open space can be downloaded freely. The restrictions are only applied to reuse this content, particularly when used for commercial purposes. In this case, it is required to give all credit to the authors.`,
+    question: `Is it illegal to download private Instagram posts`,
+    answer: `No, it’s not illegal to download videos that are publicly posted on Instagram. However, there are rules about how the content can be used, especially for commercial use. If you use the content for such purposes, you must give proper credit to the original creator.`,
   },
   {
-    question: `What operating system can I use to download Instagram videos?`,
-    answer: `All operating systems (iOS, Android, Linux, etc.) that also have an installed browser, like Chrome, Safari, Opera, Mozilla Firefox, etc., can be used to download Instagram posts. If you want to download large video or photo files, ensure you have enough memory on your device. Then you need only to copy, paste the URL, and press the download button.`,
+    question: `Which operating systems can be used to download Instagram videos?`,
+    answer: `You can use any system that has a web browser, like Windows, macOS, Linux, iOS, or Android. Make sure your device has enough storage space, especially if you're downloading large files. Just copy the URL from Instagram and paste it into instadl.app.`,
   },
   {
-    question: `Can I download multiple videos at a time with InstaDl?`,
-    answer: `Unfortunately, you cannot! The InstaDl video downloader will help you download videos only one at a time. Our advice will be to create a document where all your links are copied and then paste them onto our Instagram Video Downloader. You will even get the chance not to miss any of the posts you want to save from Instagram.`,
+    question: `Can I download multiple reels with InstaDl at the same time?`,
+    answer: ` Unfortunately, you can only download one reels at a time. We recommend saving all the URLs in a list and then pasting them one by one into the tool. This way, you won’t miss any of your favorite reels.`,
   },
   {
-    question: `What device can I use to download Instagram videos?`,
-    answer: `You can use whatever device you have that is suitable to you and has a web browser, like a PC, a desktop, a laptop, a Mac, an iPhone, or any other smartphone. The InstaDl is a web tool, a cloud-based service that does not require installation. You must copy the URL from Instagram and paste it into the tool: easy and time-saving!`,
+    question: `What kind of device can I use to download Instagram videos?`,
+    answer: `You can use any device that has a web browser, such as a PC, laptop, Mac, iPhone, or any smartphone. Instadl is a web-based tool and doesn’t need to be installed. Just copy the link from Instagram and paste it into our tool—simple and fast!`,
   },
   {
-    question: `What is the quality of the Instagram videos I save through this video downloader?`,
-    answer: `All videos you download from Instagram will be saved in the same quality (MP4, AVI, MOV, etc.), which have been uploaded in the post. Our Instagram Downloader is meant to keep up with the same quality as the original videos. Quality always matters, and we know that!`,
+    question: `What quality do the videos I download through InstaDl have?`,
+    answer: `All videos you download will be in the same quality as the original. Our downloader ensures the quality remains unchanged. Quality is important, and we know that!`,
   },
 ];
+

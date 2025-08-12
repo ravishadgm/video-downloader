@@ -11,7 +11,6 @@ import Images from "@/utils/images";
 export default function Page() {
   return (
     <>
-    
       <Downloader />
       <AboutProcess
         image={Images.Download}
@@ -56,7 +55,7 @@ export default function Page() {
       <AppPromotion />
       <FaqSection
         title="Frequently asked questions (FAQ)"
-        intro="This FAQ provides information on frequent questions or concerns about the InstaDl.app downloader. If you can't find the answer to your question, feel free to ask through email on our contact page."
+        intro="This FAQ answers common questions and worries about InstaDl.app, which is a tool to download public Instagram content. If you can't find the answer to your question, you can email us through our contact page."
         image={Images.Download}
         faqs={faqs}
       />
