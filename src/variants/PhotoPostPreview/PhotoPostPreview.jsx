@@ -21,8 +21,7 @@ export default function PhotoPostPreview({ data }) {
         <PostHeader
           avatar={data?.thumbnail}
           username={data?.username}
-            fullName={data?.fullName}
-
+          fullName={data?.fullName}
         />
 
         <MediaSwiper

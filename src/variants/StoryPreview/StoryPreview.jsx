@@ -1,8 +1,8 @@
 "use client";
-
 import { useRef, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
+import Image from "next/image";
 import "swiper/css";
 import "swiper/css/navigation";
 
@@ -61,7 +61,6 @@ export default function StoryPreview({ stories = [] }) {
 
   useEffect(() => {
     if (!isPlaying) return;
-
     const timer = setTimeout(() => {
       swiperInstance?.slideNext();
     }, activeDuration);
@@ -122,7 +121,6 @@ export default function StoryPreview({ stories = [] }) {
           onSwiper={setSwiperInstance}
           onSlideChange={(swiper) => {
             setCurrentIndex(swiper.activeIndex);
-
             const allVideos = swiper.slides.flatMap((slide) =>
               Array.from(slide.querySelectorAll("video"))
             );
@@ -130,7 +128,6 @@ export default function StoryPreview({ stories = [] }) {
               vid.pause();
               vid.muted = true;
             });
-
             // Play & apply mute setting to the active one
             const activeVideo =
               swiper.slides[swiper.activeIndex].querySelector("video");
@@ -150,6 +147,17 @@ export default function StoryPreview({ stories = [] }) {
               story.image_versions2?.candidates?.[0]?.url ||
               story.display_resources?.[0]?.src ||
               story.image_versions?.standard_resolution?.url;
+
+            // Define variables for this specific story
+            const thumbnail = story.user?.profile_pic_url;
+            const username = story.user?.username || "unknown";
+            const fullName = story.user?.full_name;
+            const initials = fullName
+              ?.split(" ")
+              .filter(Boolean)
+              .map((word) => word[0])
+              .join("")
+              .toUpperCase();
 
             return (
               <SwiperSlide key={idx}>
@@ -187,15 +195,18 @@ export default function StoryPreview({ stories = [] }) {
 
                   <div className={styles.storyTopBar}>
                     <div className={styles.storyUser}>
-                      {story.user?.profile_pic_url && (
-                        <img
-                          src={story.user.profile_pic_url}
-                          alt={story.user?.username}
-                          className={styles.storyAvatar}
-                          onError={(e) => (e.target.style.display = "none")}
+                      {thumbnail ? (
+                        <Image
+                          src={thumbnail}
+                          alt={username}
+                          width={30}
+                          height={30}
+                          className={styles.avatar}
                         />
+                      ) : (
+                        <div className={styles.initials}>{initials}</div>
                       )}
-                      <span>@{story.user?.username || "unknown"}</span>
+                      <span className={styles.username}>{username}</span>
                     </div>
 
                     {video && idx === currentIndex && (
@@ -206,7 +217,6 @@ export default function StoryPreview({ stories = [] }) {
                         >
                           {isMuted ? <FaVolumeMute /> : <FaVolumeUp />}
                         </button>
-
                         <button
                           className={styles.playPauseButton}
                           onClick={togglePlayPause}
@@ -223,6 +233,7 @@ export default function StoryPreview({ stories = [] }) {
         </Swiper>
         <SwiperNavigation swiper={swiperInstance} />
       </div>
+
       <div className={styles.shareDownload}>
         <button
           className={styles.shareBtn}
