@@ -4,7 +4,6 @@ import { getInstagramMedia } from "../../../lib/instagram-helper.js";
 export async function POST(req) {
   try {
     const { url } = await req.json();
-    console.log('Processing URL:', url);
 
     if (!url || !url.includes('instagram.com/')) {
       return NextResponse.json({
@@ -51,3 +50,4 @@ export async function POST(req) {
     }, { status: 500 });
   }
 }
+

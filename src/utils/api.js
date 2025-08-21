@@ -12,7 +12,8 @@ export async function downloadInstagramMedia(url) {
     throw new Error("Please enter a URL");
   }
 
-  if (!url.includes('instagram.com/')) {
+  if (!url.includes
+    ('instagram.com/')) {
     throw new Error("Please provide a valid Instagram URL");
   }
 

@@ -16,7 +16,6 @@ export async function getInstagramMedia(url) {
     }
 
     const data = await response.json();
-    console.log("API Response:", data);
 
     if (data.error === true || data.error === "true") {
       throw new Error("Failed to fetch Instagram media");
