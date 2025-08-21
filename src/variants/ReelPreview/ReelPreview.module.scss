@@ -77,44 +77,7 @@
   }
 }
 
-.rightActions {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-  align-self: center;
-  pointer-events: auto;
-  z-index: 3;
 
-  .icon {
-    width: 48px;
-    height: 48px;
-    font-size: 18px;
-    padding: 6px;
-    border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.45);
-    backdrop-filter: blur(5px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    color: $color-white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.2s;
-    cursor: pointer;
-
-    &:hover {
-      transform: scale(1.08);
-    }
-
-    span {
-      font-size: 10px;
-      font-weight: 500;
-      margin-top: 2px;
-      line-height: 1;
-    }
-  }
-}
 
 @media (max-width: 480px) {
   .reelContainer {
@@ -171,3 +134,32 @@
       text-transform: capitalize;
     }
   } 
+
+.rightContent {
+  align-self: flex-end;
+  margin-bottom: 49px; 
+  pointer-events: auto;
+  z-index: 2;
+
+  .muteButton {
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    outline: none;
+    color: $color-white;
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    svg {
+      width: 15px;
+      height: 15px;
+    
+    }
+  }
+}
+

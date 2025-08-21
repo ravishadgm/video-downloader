@@ -1,14 +1,13 @@
 import { useState, useRef } from "react";
-import { formatNumber } from "@/instaModal/hooks/formatNumber/formatNumber";
-import BottomActivityPanel from "@/instaModal/ui/BottomActivityPanel/BottomActivityPanel";
 import { handleShare } from "@/instaModal/hooks/share/share";
 import { handleDownload } from "@/instaModal/hooks/download/download";
-import { FaHeart, FaEye, FaPaperPlane } from "react-icons/fa";
+import { FaVolumeUp, FaVolumeMute } from "@/icons/index"; // import icons
 import styles from "./ReelPreview.module.scss";
 
 export default function ReelPreview({ data }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isMuted, setIsMuted] = useState(true); // state for mute/unmute
   const videoRef = useRef(null);
 
   const handlePlay = () => setIsPlaying(true);
@@ -19,13 +18,19 @@ export default function ReelPreview({ data }) {
     if (!text) return "Video caption";
     if (text.length <= maxLength) return text;
 
-    // Find the last space before maxLength to avoid cutting words
     const truncated = text.substring(0, maxLength);
     const lastSpace = truncated.lastIndexOf(" ");
     return lastSpace > 0 ? text.substring(0, lastSpace) : truncated;
   };
 
   const toggleCaption = () => setIsExpanded(!isExpanded);
+
+  const toggleMute = () => {
+    if (!videoRef.current) return;
+    const newMuted = !isMuted;
+    videoRef.current.muted = newMuted;
+    setIsMuted(newMuted);
+  };
 
   return (
     <div className={styles.reelContainer}>
@@ -35,7 +40,7 @@ export default function ReelPreview({ data }) {
         src={data.mediaUrl}
         poster={`/api/proxy?url=${encodeURIComponent(data.thumbnail)}`}
         controls
-        muted
+        muted={isMuted} // bind mute state
         autoPlay
         playsInline
         preload="metadata"
@@ -46,7 +51,9 @@ export default function ReelPreview({ data }) {
 
       <div className={styles.overlayContent}>
         <div className={styles.leftContent}>
-          <p className={styles.username}>@{data.username || "username"}</p>
+          <p className={styles.username}>
+            @{data.username || "Instagram User"}
+          </p>
 
           <div className={styles.caption} onClick={toggleCaption}>
             {isExpanded ? (
@@ -71,19 +78,11 @@ export default function ReelPreview({ data }) {
           </div>
         </div>
 
-        <div className={styles.rightActions}>
-          <div className={styles.icon}>
-            <FaHeart />
-            <span>{formatNumber(data.likes)} </span>
-          </div>
-          <div className={styles.icon}>
-            <FaEye />
-            <span>{formatNumber(data.views)} </span>
-          </div>
-          <div className={styles.icon} onClick={() => handleShare(data?.mediaUrls[0])}>
-            <FaPaperPlane />
-            <span>Share</span>
-          </div>
+        {/* Right content: volume button */}
+        <div className={styles.rightContent}>
+          <button className={styles.muteButton} onClick={toggleMute}>
+            {isMuted ? <FaVolumeMute /> : <FaVolumeUp />}
+          </button>
         </div>
       </div>
 

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; // <-- for auto-active based on URL
+import { usePathname } from "next/navigation";
 import MediaPreview from "@/components/mediaPreview/MediaPreview";
 import styles from "./style.module.scss";
 import { mainNavLinks } from "@/dataStore/linksContent";
@@ -13,7 +13,9 @@ export default function Downloader({
   title = "Instagram Downloader",
   subtitle = "Download Instagram Videos, Photos, Reels, IGTV & carousel",
 }) {
-  const [url, setUrl] = useState("");
+  const [url, setUrl] = useState(
+    "https://www.instagram.com/stories/bharti.laughterqueen/"
+  );
   const [mediaData, setMediaData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -29,7 +31,9 @@ export default function Downloader({
       document.title = pageMeta.title;
     }
     if (pageMeta.description) {
-      let metaDescriptionTag = document.querySelector('meta[name="description"]');
+      let metaDescriptionTag = document.querySelector(
+        'meta[name="description"]'
+      );
       if (!metaDescriptionTag) {
         metaDescriptionTag = document.createElement("meta");
         metaDescriptionTag.setAttribute("name", "description");
@@ -78,28 +82,32 @@ export default function Downloader({
     <>
       <div className={styles.wrapper}>
         <nav className={styles.category}>
-          {mainNavLinks?.map(({ label, icon, href, metaTitle, metaDescription }, idx) => {
-            const isActive = pathname === href; // check if current route matches link
-            return (
-              <div
-                className={`${styles.category_element} ${isActive ? styles.active : ""}`}
-                key={idx}
-              >
-                <Link
-                  href={href}
-                  onClick={() =>
-                    setPageMeta({
-                      title: metaTitle || label,
-                      description: metaDescription || "",
-                    })
-                  }
+          {mainNavLinks?.map(
+            ({ label, icon, href, metaTitle, metaDescription }, idx) => {
+              const isActive = pathname === href; // check if current route matches link
+              return (
+                <div
+                  className={`${styles.category_element} ${
+                    isActive ? styles.active : ""
+                  }`}
+                  key={idx}
                 >
-                  {icon}
-                  <span>{label}</span>
-                </Link>
-              </div>
-            );
-          })}
+                  <Link
+                    href={href}
+                    onClick={() =>
+                      setPageMeta({
+                        title: metaTitle || label,
+                        description: metaDescription || "",
+                      })
+                    }
+                  >
+                    {icon}
+                    <span>{label}</span>
+                  </Link>
+                </div>
+              );
+            }
+          )}
         </nav>
 
         <h1 className={styles.title}>{title}</h1>

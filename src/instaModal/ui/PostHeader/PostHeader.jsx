@@ -1,32 +1,36 @@
-"use client";
-
 import Image from "next/image";
 import styles from "./PostHeader.module.scss";
 
-export default function PostHeader({ thumbnail, username, fullName }) {
-  if (!username) return null;
+export default function PostHeader({ username, avatar }) {
+  const displayName = username || "Instagram_User";
 
-  const initials = fullName
-    ?.split(" ")
-    .filter(Boolean)
-    .map((word) => word[0])
-    .join("")
-    .toUpperCase();
+  let initials = "";
+  if (displayName === "Instagram_User") {
+    initials = "IU";
+  } else {
+    initials = displayName
+      .split(" ")
+      .map((word) => word[0])
+      .join("")
+      .slice(0, 2)
+      .toUpperCase();
+  }
 
   return (
     <div className={styles.header}>
-      {thumbnail ? (
+      {avatar ? (
         <Image
-          src={thumbnail}
-          alt={username}
-          width={30}
-          height={30}
+          src={avatar}
+          alt={displayName}
+          width={35}
+          height={35}
           className={styles.avatar}
         />
       ) : (
         <div className={styles.initials}>{initials}</div>
       )}
-      <span className={styles.username}>{username}</span>
+
+      <span className={styles.username}>{displayName}</span>
     </div>
   );
 }
