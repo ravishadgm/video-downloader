@@ -1,9 +1,6 @@
 export async function getInstagramMedia(url) {
   try {
-    // Encode the Instagram URL properly
     const encodedUrl = encodeURIComponent(url);
-    
-    // Use the correct endpoint '/get-info-rapidapi'
     const apiUrl = `https://instagram-downloader-download-instagram-videos-stories1.p.rapidapi.com/get-info-rapidapi?url=${encodedUrl}`;
     
     const response = await fetch(apiUrl, {
@@ -15,30 +12,44 @@ export async function getInstagramMedia(url) {
     });
 
     if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error(`API Error: ${response.status} - ${errorText}`);
+      throw new Error(`API Error: ${response.status}`);
     }
 
-    const result = await response.text();
-    const data = JSON.parse(result);
-    
+    const data = await response.json();
     console.log('API Response:', data);
 
-    // Handle the response
-    if (data.success !== false) {
-      return {
-        success: true,
-        mediaUrl: data.download_url || data.media?.[0]?.url || data.url,
-        thumbnail: data.thumbnail || data.thumb,
-        type: data.type || (data.download_url?.includes('.mp4') ? 'video' : 'image'),
-        username: data.username || data.author || 'unknown',
-        caption: data.caption || data.title || '',
-        likes: data.likes || 0,
-        comments: data.comments || 0
-      };
-    } else {
-      throw new Error(data.message || 'Failed to extract media');
+    // Handle error response
+    if (data.error === true || data.error === "true") {
+      throw new Error('Failed to fetch Instagram media');
     }
+
+    // Extract media information based on uzapishop response format
+    const mediaUrls = data.medias?.map(media => media.download_url) || [];
+    const firstMedia = data.medias?.[0];
+
+    return {
+      success: true,
+      error: data.error,
+      hosting: data.hosting,
+      shortcode: data.shortcode,
+      caption: data.caption,
+      type: data.type, // "album", "video", "image"
+      
+      // Media URLs
+      mediaUrl: firstMedia?.download_url || data.thumb, // First media URL
+      mediaUrls: mediaUrls, // All media URLs for carousel
+      thumbnail: data.thumb,
+      
+      // All media details
+      medias: data.medias || [],
+      totalMedia: data.medias?.length || 0,
+      
+      // Media types
+      hasMultipleMedia: data.type === 'album',
+      isCarousel: data.type === 'album',
+      isVideo: data.type === 'video',
+      isImage: data.type === 'image'
+    };
 
   } catch (error) {
     console.error('Instagram extraction error:', error);

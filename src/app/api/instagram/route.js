@@ -14,7 +14,30 @@ export async function POST(req) {
 
     const result = await getInstagramMedia(url);
     
-    return NextResponse.json(result);
+    // Return the exact format matching uzapishop response
+    return NextResponse.json({
+      success: true,
+      error: result.error,
+      hosting: result.hosting,
+      shortcode: result.shortcode,
+      caption: result.caption,
+      type: result.type,
+      
+      // Media information
+      mediaUrl: result.mediaUrl, // First/main media URL
+      mediaUrls: result.mediaUrls, // All media URLs (for carousel)
+      medias: result.medias, // Complete media array from API
+      thumb: result.thumbnail,
+      
+      // Additional info
+      totalMedia: result.totalMedia,
+      isCarousel: result.isCarousel,
+      isVideo: result.isVideo,
+      isImage: result.isImage,
+      
+      // Metadata
+      timestamp: new Date().toISOString()
+    });
     
   } catch (error) {
     console.error('API Error:', error.message);
