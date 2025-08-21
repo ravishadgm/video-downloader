@@ -1,130 +1,111 @@
 const axios = require("axios");
 const qs = require("qs");
 
-async function getInstagramMedia(url_media) {
-  try {
-    const resolvedUrl = await checkRedirect(url_media);
-    const shortcode = getShortcode(resolvedUrl);
-    const data = await instagramRequest(shortcode, 5, 1000);
-    return createOutputData(data);
-  } catch (err) {
-    console.error("Instagram fetch failed:", err.message || err);
-    throw new Error("Failed to fetch Instagram media.");
-  }
-}
+const CACHE = {}; // simple in-memory cache
 
-// --- Utilities ---
-
-async function checkRedirect(url) {
-  if (url.includes("/share/")) {
-    const res = await axios.get(url, { maxRedirects: 0 }).catch(() => null);
-    if (res?.headers?.location) return res.headers.location;
-  }
-  return url;
+async function getCSRFToken() {
+  const res = await axios.get("https://www.instagram.com/");
+  const cookie = res.headers["set-cookie"]?.[0];
+  if (!cookie) throw new Error("CSRF token not found");
+  return cookie.split(";")[0].replace("csrftoken=", "");
 }
 
 function getShortcode(url) {
-  const segments = url.split("/");
+  const split = url.split("/");
   const tags = ["p", "reel", "tv", "reels"];
-  const index = segments.findIndex((s) => tags.includes(s));
-  if (index === -1 || !segments[index + 1]) throw new Error("Invalid Instagram URL");
-  return segments[index + 1];
+  const idx = split.findIndex((i) => tags.includes(i)) + 1;
+  return split[idx];
 }
 
-async function getCSRFToken() {
-  const res = await axios.get("https://www.instagram.com/", { headers: { "User-Agent": "Mozilla/5.0" } });
-  const cookies = res.headers["set-cookie"] || [];
-  const token = cookies.find((c) => c.startsWith("csrftoken="));
-  if (!token) throw new Error("CSRF token not found");
-  return token.split(";")[0].replace("csrftoken=", "");
-}
-
-async function instagramRequest(shortcode, retries, delay) {
-  const docId = "9510064595728286";
-  const token = await getCSRFToken();
-  const body = qs.stringify({
-    variables: JSON.stringify({ shortcode }),
-    doc_id: docId,
-  });
-
+async function instagramRequest(shortcode, retries = 5, delay = 1000) {
   try {
-    const res = await axios.post("https://www.instagram.com/graphql/query", body, {
-      headers: {
-        "User-Agent": "Mozilla/5.0",
-        "X-CSRFToken": token,
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
+    const token = await getCSRFToken();
+    const dataBody = qs.stringify({
+      variables: JSON.stringify({ shortcode }),
+      doc_id: "9510064595728286",
     });
-    if (!res.data?.data?.xdt_shortcode_media) throw new Error("Media not supported or invalid URL");
-    return res.data.data.xdt_shortcode_media;
+
+    const { data } = await axios.post("https://www.instagram.com/graphql/query", dataBody, {
+      headers: { "X-CSRFToken": token, "Content-Type": "application/x-www-form-urlencoded" },
+      maxBodyLength: Infinity,
+    });
+
+    if (!data.data?.xdt_shortcode_media) throw new Error("Invalid Instagram link");
+    return data.data.xdt_shortcode_media;
   } catch (err) {
-    if (retries > 0 && err.response && [429, 403].includes(err.response.status)) {
-      const wait = err.response.headers["retry-after"] ? parseInt(err.response.headers["retry-after"]) * 1000 : delay;
-      await new Promise((r) => setTimeout(r, wait));
+    const status = err.response?.status;
+    if ([429, 403].includes(status) && retries > 0) {
+      await new Promise((r) => setTimeout(r, delay));
       return instagramRequest(shortcode, retries - 1, delay * 2);
     }
     throw err;
   }
 }
 
-function isSidecar(data) {
-  return data.__typename === "XDTGraphSidecar";
-}
+function formatMedia(data) {
+  const url_list = [];
+  const media_details = [];
 
-function createOutputData(requestData) {
-  const mediaDetails = [];
-  const urlList = [];
-
-  if (isSidecar(requestData)) {
-    requestData.edge_sidecar_to_children.edges.forEach((m) => {
-      mediaDetails.push(formatMediaDetails(m.node));
-      urlList.push(m.node.is_video ? m.node.video_url : m.node.display_url);
+  const isSidecar = data["__typename"] === "XDTGraphSidecar";
+  if (isSidecar) {
+    data.edge_sidecar_to_children.edges.forEach((m) => {
+      const node = m.node;
+      media_details.push({
+        type: node.is_video ? "video" : "image",
+        url: node.is_video ? node.video_url : node.display_url,
+        dimensions: node.dimensions,
+        thumbnail: node.display_url,
+        video_view_count: node.video_view_count || undefined,
+      });
+      url_list.push(node.is_video ? node.video_url : node.display_url);
     });
   } else {
-    mediaDetails.push(formatMediaDetails(requestData));
-    urlList.push(requestData.is_video ? requestData.video_url : requestData.display_url);
+    media_details.push({
+      type: data.is_video ? "video" : "image",
+      url: data.is_video ? data.video_url : data.display_url,
+      dimensions: data.dimensions,
+      thumbnail: data.display_url,
+      video_view_count: data.video_view_count || undefined,
+    });
+    url_list.push(data.is_video ? data.video_url : data.display_url);
   }
 
+  const captionEdge = data.edge_media_to_caption.edges[0];
+  const caption = captionEdge ? captionEdge.node.text : "";
+
   return {
-    results_number: urlList.length,
-    url_list: urlList,
-    post_info: formatPostInfo(requestData),
-    media_details: mediaDetails,
+    url_list,
+    media_details,
+    post_info: {
+      owner_username: data.owner.username,
+      owner_fullname: data.owner.full_name,
+      is_verified: data.owner.is_verified,
+      is_private: data.owner.is_private,
+      likes: data.edge_media_preview_like.count,
+      is_ad: data.is_ad,
+      caption,
+    },
   };
 }
 
-function formatPostInfo(data) {
-  const captionEdge = data.edge_media_to_caption?.edges || [];
-  const caption = captionEdge.length ? captionEdge[0].node.text : "";
-  return {
-    owner_username: data.owner.username,
-    owner_fullname: data.owner.full_name,
-    is_verified: data.owner.is_verified,
-    is_private: data.owner.is_private,
-    likes: data.edge_media_preview_like.count,
-    is_ad: data.is_ad,
-    caption,
-  };
-}
+async function getInstagramMedia(url) {
+  if (CACHE[url] && Date.now() - CACHE[url].timestamp < 60000) return CACHE[url].data;
 
-function formatMediaDetails(media) {
-  if (media.is_video) {
-    return {
-      type: "video",
-      dimensions: media.dimensions,
-      video_view_count: media.video_view_count,
-      url: media.video_url,
-      thumbnail: media.display_url,
-    };
-  } else {
-    return {
-      type: "image",
-      dimensions: media.dimensions,
-      url: media.display_url,
-    };
+  const shortcode = getShortcode(url);
+  let data;
+  try {
+    data = await instagramRequest(shortcode);
+  } catch (err) {
+    // fallback to proxy
+    const proxyUrl = `https://insta-video-downloader-two.vercel.app/api/proxy?url=${encodeURIComponent(url)}`;
+    const res = await axios.get(proxyUrl);
+    if (!res.data) throw new Error("Failed via proxy");
+    return res.data;
   }
+
+  const output = formatMedia(data);
+  CACHE[url] = { timestamp: Date.now(), data: output };
+  return output;
 }
 
-module.exports = {
-  getInstagramMedia,
-};
+module.exports = { getInstagramMedia };
