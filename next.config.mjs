@@ -21,10 +21,10 @@ const nextConfig = {
     ],
   },
 
-  experimental: {
-    turbo: false,
-    appDir: true,
-  },
+ experimental: {
+    serverComponentsExternalPackages: []
+  }
+
 };
 
 export default nextConfig;

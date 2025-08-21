@@ -1,111 +1,47 @@
-const axios = require("axios");
-const qs = require("qs");
-
-const CACHE = {}; // simple in-memory cache
-
-async function getCSRFToken() {
-  const res = await axios.get("https://www.instagram.com/");
-  const cookie = res.headers["set-cookie"]?.[0];
-  if (!cookie) throw new Error("CSRF token not found");
-  return cookie.split(";")[0].replace("csrftoken=", "");
-}
-
-function getShortcode(url) {
-  const split = url.split("/");
-  const tags = ["p", "reel", "tv", "reels"];
-  const idx = split.findIndex((i) => tags.includes(i)) + 1;
-  return split[idx];
-}
-
-async function instagramRequest(shortcode, retries = 5, delay = 1000) {
+export async function getInstagramMedia(url) {
   try {
-    const token = await getCSRFToken();
-    const dataBody = qs.stringify({
-      variables: JSON.stringify({ shortcode }),
-      doc_id: "9510064595728286",
+    // Encode the Instagram URL properly
+    const encodedUrl = encodeURIComponent(url);
+    
+    // Use the correct endpoint '/get-info-rapidapi'
+    const apiUrl = `https://instagram-downloader-download-instagram-videos-stories1.p.rapidapi.com/get-info-rapidapi?url=${encodedUrl}`;
+    
+    const response = await fetch(apiUrl, {
+      method: 'GET',
+      headers: {
+        'x-rapidapi-key': '7eb02db216msh902bd566fbaa81cp19777ajsn5c9a261d9520',
+        'x-rapidapi-host': 'instagram-downloader-download-instagram-videos-stories1.p.rapidapi.com'
+      }
     });
 
-    const { data } = await axios.post("https://www.instagram.com/graphql/query", dataBody, {
-      headers: { "X-CSRFToken": token, "Content-Type": "application/x-www-form-urlencoded" },
-      maxBodyLength: Infinity,
-    });
-
-    if (!data.data?.xdt_shortcode_media) throw new Error("Invalid Instagram link");
-    return data.data.xdt_shortcode_media;
-  } catch (err) {
-    const status = err.response?.status;
-    if ([429, 403].includes(status) && retries > 0) {
-      await new Promise((r) => setTimeout(r, delay));
-      return instagramRequest(shortcode, retries - 1, delay * 2);
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`API Error: ${response.status} - ${errorText}`);
     }
-    throw err;
+
+    const result = await response.text();
+    const data = JSON.parse(result);
+    
+    console.log('API Response:', data);
+
+    // Handle the response
+    if (data.success !== false) {
+      return {
+        success: true,
+        mediaUrl: data.download_url || data.media?.[0]?.url || data.url,
+        thumbnail: data.thumbnail || data.thumb,
+        type: data.type || (data.download_url?.includes('.mp4') ? 'video' : 'image'),
+        username: data.username || data.author || 'unknown',
+        caption: data.caption || data.title || '',
+        likes: data.likes || 0,
+        comments: data.comments || 0
+      };
+    } else {
+      throw new Error(data.message || 'Failed to extract media');
+    }
+
+  } catch (error) {
+    console.error('Instagram extraction error:', error);
+    throw new Error(`Instagram download failed: ${error.message}`);
   }
 }
-
-function formatMedia(data) {
-  const url_list = [];
-  const media_details = [];
-
-  const isSidecar = data["__typename"] === "XDTGraphSidecar";
-  if (isSidecar) {
-    data.edge_sidecar_to_children.edges.forEach((m) => {
-      const node = m.node;
-      media_details.push({
-        type: node.is_video ? "video" : "image",
-        url: node.is_video ? node.video_url : node.display_url,
-        dimensions: node.dimensions,
-        thumbnail: node.display_url,
-        video_view_count: node.video_view_count || undefined,
-      });
-      url_list.push(node.is_video ? node.video_url : node.display_url);
-    });
-  } else {
-    media_details.push({
-      type: data.is_video ? "video" : "image",
-      url: data.is_video ? data.video_url : data.display_url,
-      dimensions: data.dimensions,
-      thumbnail: data.display_url,
-      video_view_count: data.video_view_count || undefined,
-    });
-    url_list.push(data.is_video ? data.video_url : data.display_url);
-  }
-
-  const captionEdge = data.edge_media_to_caption.edges[0];
-  const caption = captionEdge ? captionEdge.node.text : "";
-
-  return {
-    url_list,
-    media_details,
-    post_info: {
-      owner_username: data.owner.username,
-      owner_fullname: data.owner.full_name,
-      is_verified: data.owner.is_verified,
-      is_private: data.owner.is_private,
-      likes: data.edge_media_preview_like.count,
-      is_ad: data.is_ad,
-      caption,
-    },
-  };
-}
-
-async function getInstagramMedia(url) {
-  if (CACHE[url] && Date.now() - CACHE[url].timestamp < 60000) return CACHE[url].data;
-
-  const shortcode = getShortcode(url);
-  let data;
-  try {
-    data = await instagramRequest(shortcode);
-  } catch (err) {
-    // fallback to proxy
-    const proxyUrl = `https://insta-video-downloader-two.vercel.app/api/proxy?url=${encodeURIComponent(url)}`;
-    const res = await axios.get(proxyUrl);
-    if (!res.data) throw new Error("Failed via proxy");
-    return res.data;
-  }
-
-  const output = formatMedia(data);
-  CACHE[url] = { timestamp: Date.now(), data: output };
-  return output;
-}
-
-module.exports = { getInstagramMedia };
